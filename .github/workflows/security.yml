@@ -53,7 +53,34 @@ jobs:
         run: scripts/ci-install-scanners.sh
       - name: Generate SARIF reports
         run: scripts/security-report.sh
-      - name: Upload to GitHub code scanning
-        uses: github/codeql-action/upload-sarif@1190a975f95ce23525efb6a3fc21ea29567c1b52 # v3.38.2
+      # One upload per scanner: code scanning rejects several runs under one category.
+      - name: Upload gitleaks results
+        if: always() && hashFiles('reports/sarif/gitleaks.sarif') != ''
+        uses: github/codeql-action/upload-sarif@2892aa5e19bbd11bc0cff5427e3b750a04d9e3c2 # v4.38.2
         with:
-          sarif_file: reports/sarif
+          sarif_file: reports/sarif/gitleaks.sarif
+          category: gitleaks              # one category per scanner (required since 2025)
+      - name: Upload semgrep results
+        if: always() && hashFiles('reports/sarif/semgrep.sarif') != ''
+        uses: github/codeql-action/upload-sarif@2892aa5e19bbd11bc0cff5427e3b750a04d9e3c2 # v4.38.2
+        with:
+          sarif_file: reports/sarif/semgrep.sarif
+          category: semgrep              # one category per scanner (required since 2025)
+      - name: Upload trivy-config results
+        if: always() && hashFiles('reports/sarif/trivy-config.sarif') != ''
+        uses: github/codeql-action/upload-sarif@2892aa5e19bbd11bc0cff5427e3b750a04d9e3c2 # v4.38.2
+        with:
+          sarif_file: reports/sarif/trivy-config.sarif
+          category: trivy-config              # one category per scanner (required since 2025)
+      - name: Upload checkov results
+        if: always() && hashFiles('reports/sarif/checkov.sarif') != ''
+        uses: github/codeql-action/upload-sarif@2892aa5e19bbd11bc0cff5427e3b750a04d9e3c2 # v4.38.2
+        with:
+          sarif_file: reports/sarif/checkov.sarif
+          category: checkov              # one category per scanner (required since 2025)
+      - name: Upload trivy-image results
+        if: always() && hashFiles('reports/sarif/trivy-image.sarif') != ''
+        uses: github/codeql-action/upload-sarif@2892aa5e19bbd11bc0cff5427e3b750a04d9e3c2 # v4.38.2
+        with:
+          sarif_file: reports/sarif/trivy-image.sarif
+          category: trivy-image              # one category per scanner (required since 2025)

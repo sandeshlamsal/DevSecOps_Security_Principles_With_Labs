@@ -14,7 +14,7 @@ kubeconform -strict -summary -kubernetes-version 1.35.0 -schema-location default
   -schema-location 'https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json' \
   gitops/ platform/kyverno/
 
-step "3/3 Docs: markdown links"
+step "3/3 Docs: markdown links + every page listed in INDEX.md"
 python3 scripts/check-links.py
 
 echo; echo "CI: ALL CHECKS PASSED"

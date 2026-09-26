@@ -18,6 +18,8 @@ docker exec secops-lab-worker ps -eo user,pid,comm | head
 docker exec secops-lab-worker cat /proc/1/status | grep -i ^cap   # capability bitmasks of PID 1
 ```
 
+**Go deeper:** [Linux security notes](../linux-security/README.md): firewalls, ACLs, SELinux/AppArmor, auditd, reverse proxies and built-in analysis tools.
+
 ## Check yourself
 1. Why is a process running as root inside a container a risk?
 2. What does `chmod 640 file` allow, and for whom?

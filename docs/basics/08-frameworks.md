@@ -21,6 +21,8 @@ Job descriptions and interviews use these names constantly. Know what each is **
 | **PCI DSS** | Rules for handling payment-card data | Any company taking cards |
 | **GDPR** | EU data-protection law | Anything handling personal data |
 
+**Go deeper:** the [GRC section](../grc/README.md) covers audits, each standard and regulation, privacy, and payments security in detail.
+
 ## Check yourself
 1. CVE vs CWE: which is a specific bug, and which is a category?
 2. A CVSS 9.8 isn't on the CISA KEV list; a CVSS 7.5 is. Which do you patch first, and why?

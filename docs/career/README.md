@@ -1,6 +1,6 @@
 # Career Study Guide: Security Engineer & DevSecOps Engineer
 
-**This is the page to follow.** It links every lesson, principle, lab and interview question in the repo into one plan.
+**This is the page to follow.** Deciding *which* security role to aim for? Start with [career pathways](PATHWAYS.md). It links every lesson, principle, lab and interview question in the repo into one plan.
 Work through it in order, tick the boxes as you go, and you'll finish with real lab evidence to talk about in interviews.
 
 ## Contents

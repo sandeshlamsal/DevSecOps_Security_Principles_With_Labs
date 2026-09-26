@@ -169,6 +169,9 @@ See how the tools connect in the [DevSecOps toolchain](architecture/devsecops-to
 
 ## 10. Frameworks and standards
 
+Full detail: [GRC section](grc/README.md) ([standards and regulations](grc/standards-and-regulations.md), [privacy](grc/privacy-and-pii.md), [payments, ATM and EDI](grc/payments-atm-edi.md)).
+
+
 Full cheat sheet: [baby step 8](basics/08-frameworks.md). In brief: **NIST CSF** (programme), **ISO 27001 / SOC 2** (certification/audit),
 **CIS Benchmarks** (hardening), **OWASP ASVS** (app requirements), **MITRE ATT&CK** (attacker techniques), **PCI DSS** (card data),
 **GDPR** (personal data), **SLSA** (build integrity), **NIST SP 800-61** (incident handling).

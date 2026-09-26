@@ -17,9 +17,13 @@ OWASP Top 10 and more, and is meant to be run locally for learning. The reasons 
 
 ## Where to start
 
+🗺️ **[INDEX.md](INDEX.md)**: the map of every page and file in the project.
+
+
 | You are… | Start with |
 |---|---|
 | **New to security** | 👶 [Baby steps](docs/basics/README.md): eight short, plain-English lessons, each with a small hands-on exercise |
+| **Moving from DevOps into security** | 🧭 [Career pathways](docs/career/PATHWAYS.md): DevSecOps, Cloud Security, AppSec, Detection & Response, GRC: plans per role |
 | **Targeting a job** | 🎯 [Career guide](docs/career/README.md): what each role does, the skills map, and how this lab proves each skill |
 | **Ready to build** | 🧪 [Labs](docs/labs/README.md): step-by-step guides with real commands, output and issues |
 | **Following a plan** | 🗺️ [Roadmap](docs/career/ROADMAP.md): 36 weeks, 5 phases (fundamentals → Azure cloud security → DevSecOps pipeline → Kubernetes security → portfolio), with certifications |
@@ -27,6 +31,8 @@ OWASP Top 10 and more, and is meant to be run locally for learning. The reasons 
 | **Learning the principles** | 📐 [Principles](docs/principles/README.md): 13 principles, each with its own hands-on labs |
 | **Looking up a term or tool** | 📖 [Glossary](docs/GLOSSARY.md): SAST, DAST, SBOM, SOPS, Checkov and 150+ more, each with where it's used in this lab |
 | **Seeing how the tools connect** | 🔧 [DevSecOps toolchain](docs/architecture/devsecops-toolchain.md): pipeline diagram, SAST/DAST/SCA, vulnerability reporting flow |
+| **Hardening Linux hosts** | 🐧 [Linux security notes](docs/linux-security/README.md): firewalls, reverse proxies, ACLs, SELinux/AppArmor, auditd, built-in analysis tools |
+| **Audits, standards and compliance** | 📋 [GRC](docs/grc/README.md): audits, ISO 27001, SOC 2, FedRAMP, GDPR/NIS2/DORA, PII, PCI DSS, ATM and EDI security, phishing simulations |
 | **Working with cloud and Kubernetes** | ☁️ [Securing the stack](docs/architecture/README.md): cloud, cluster, containers, pods and microservices, layer by layer |
 
 ## Security gates on this repo
@@ -82,6 +88,9 @@ make open         # http://localhost:3000 (bound to 127.0.0.1 only)
 | [docs/cloud/](docs/cloud/README.md) · [infra/azure/](infra/azure/) | Azure cloud security labs + secure-by-default AKS Terraform |
 | [docs/architecture/](docs/architecture/README.md) | Securing cloud, Kubernetes, containers, pods and microservices · [toolchain](docs/architecture/devsecops-toolchain.md) |
 | [docs/GLOSSARY.md](docs/GLOSSARY.md) | Security terms and tools, A–Z |
+| [docs/linux-security/](docs/linux-security/README.md) | Linux security notes |
+| [docs/grc/](docs/grc/README.md) | Governance, risk and compliance: audits, standards, privacy, payments |
+| [docs/career/PATHWAYS.md](docs/career/PATHWAYS.md) | DevOps → security role pathways |
 | [docs/security-way.md](docs/security-way.md) | Our operating rules (ethics, secrets, evidence) |
 | [docs/adr/](docs/adr/) | Architecture Decision Records |
 | [docs/templates/](docs/templates/) | Threat model, finding and security-incident templates |

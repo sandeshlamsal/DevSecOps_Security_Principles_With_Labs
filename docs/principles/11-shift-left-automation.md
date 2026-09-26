@@ -37,11 +37,11 @@ Add to `scripts/ci.sh` (and so to GitHub Actions):
 3. **SAST:** your custom Semgrep rule from Lab 7.3.
 Then open a pull request that deliberately breaks each gate, and capture the failed run as evidence.
 
-### Lab 11.2: Pre-commit hooks ⏳
+### Lab 11.2: Pre-commit hooks ✅ ([execution guide](../labs/lab-08-precommit-and-baselines.md))
 Add the [pre-commit](https://pre-commit.com/) framework with gitleaks, so secrets are caught before they even leave the laptop.
 Explain why you still need the CI check (hooks can be skipped with `--no-verify`).
 
-### Lab 11.3: Baselines and exceptions ⏳
+### Lab 11.3: Baselines and exceptions ✅ ([execution guide](../labs/lab-08-precommit-and-baselines.md))
 Run a scanner against Juice Shop with dozens of findings. Create a baseline so only **new** findings fail CI, and write a
 `SECURITY-EXCEPTIONS.md` entry format (ID, reason, owner, expiry). Add a CI check that fails on expired exceptions.
 

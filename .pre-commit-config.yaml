@@ -1,0 +1,18 @@
+# Developer-laptop first layer: catch problems BEFORE they are committed.
+# CI gates (scripts/security-scan.sh) still run server-side, because hooks can be skipped
+# with --no-verify. Install once per clone with:  pre-commit install
+# These local hooks reuse the SAME pinned tools as CI (gitleaks 8.30.1, semgrep + .semgrep rules).
+repos:
+  - repo: local
+    hooks:
+      - id: gitleaks
+        name: gitleaks (secrets in staged changes)
+        entry: gitleaks git --staged --redact --no-banner --exit-code 1
+        language: system
+        pass_filenames: false
+      - id: semgrep-custom-sqli
+        name: Semgrep custom rules (SQLi regression gate)
+        entry: semgrep scan --config .semgrep/ --error --quiet --disable-version-check --metrics=off
+        language: system
+        types: [ts]
+        exclude: '^\.semgrep/'

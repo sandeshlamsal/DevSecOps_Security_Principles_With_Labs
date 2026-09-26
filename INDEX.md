@@ -105,6 +105,7 @@ CI checks that **every Markdown page is linked from this index**, so nothing get
 | [lab-05-defense-in-depth.md](docs/labs/lab-05-defense-in-depth.md) | ✅ Default-deny NetworkPolicy + Pod Security enforce (F-003/004 fixed) |
 | [lab-06-virtual-patch-proxy.md](docs/labs/lab-06-virtual-patch-proxy.md) | ✅ Hardened reverse proxy blocks exposed paths (B1; F-005/006/013/014/015) |
 | [lab-07-sast-supply-chain.md](docs/labs/lab-07-sast-supply-chain.md) | ✅ Custom SAST rule (F-016 regression gate) + build/scan/SBOM/sign pipeline (M2–M3) |
+| [lab-08-precommit-and-baselines.md](docs/labs/lab-08-precommit-and-baselines.md) | ✅ Pre-commit hooks (gitleaks + custom SAST) + baseline/exceptions model |
 | [threat-models/README.md](threat-models/README.md) | Index of threat models |
 | [threat-models/juice-shop-assets.md](threat-models/juice-shop-assets.md) | ✅ 17 assets classified and CIA-rated |
 | [threat-models/juice-shop.md](threat-models/juice-shop.md) | ✅ Full app threat model: DFD + STRIDE, 21 threats |
@@ -209,6 +210,7 @@ CI checks that **every Markdown page is linked from this index**, so nothing get
 | [platform/kyverno/cluster-only/verify-image-signatures.yaml](platform/kyverno/cluster-only/verify-image-signatures.yaml) | Signature verification (needs a live cluster) |
 | [gitops/apps/juice-shop.yaml](gitops/apps/juice-shop.yaml) | Argo CD Application (selfHeal) |
 | [infra/azure/](infra/azure/) | Secure-by-default AKS Terraform: [main.tf](infra/azure/main.tf), [variables.tf](infra/azure/variables.tf), [outputs.tf](infra/azure/outputs.tf), [versions.tf](infra/azure/versions.tf), [tfvars example](infra/azure/terraform.tfvars.example) |
+| [.pre-commit-config.yaml](.pre-commit-config.yaml) | Pre-commit hooks (gitleaks + custom SAST), same pinned tools as CI |
 | [.editorconfig](.editorconfig) · [.gitignore](.gitignore) | Formatting · what never gets committed (state, tfvars, keys, reports) |
 
 ---

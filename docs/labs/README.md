@@ -9,7 +9,7 @@ executed, its **execution guide** (the real commands, output and issues) is adde
 |---|---|---|---|
 | 00 Foundation | 0 | [lab-00-foundation.md](lab-00-foundation.md) | ✅ 2026-09-26 · 9 findings, 3 issues |
 | [01 CIA triad & risk](../principles/01-cia-triad-and-risk.md) | 1.1 assets · 1.2 risk-rating | [lab-01-cia-and-risk.md](lab-01-cia-and-risk.md) | ✅ 2026-09-26 · 3 new findings, 2 issues |
-| [02 Threat modelling](../principles/02-threat-modeling.md) | 2.1 DFD · 2.2 STRIDE · 2.3 change model | — | ⏳ |
+| [02 Threat modelling](../principles/02-threat-modeling.md) | 2.1 DFD · 2.2 STRIDE · 2.3 change model | [lab-02-threat-modeling.md](lab-02-threat-modeling.md) | ✅ 2026-09-26 · 21 threats, 5 new findings |
 | [03 Least privilege](../principles/03-least-privilege.md) | 3.1 SA token · 3.2 securityContext · 3.3 RBAC | — | ⏳ |
 | [04 Defence in depth](../principles/04-defense-in-depth.md) | 4.1 NetworkPolicy · 4.2 Pod Security · 4.3 layer map | — | ⏳ |
 | [05 Attack surface](../principles/05-attack-surface-reduction.md) | 5.1 enumerate · 5.2 image surface · 5.3 close doors | — | ⏳ |

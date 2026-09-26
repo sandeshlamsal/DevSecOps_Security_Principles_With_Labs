@@ -30,12 +30,12 @@ one port. Phase 0 showed that the trust boundary between "anonymous internet" an
 
 ## Hands-on labs
 
-### Lab 2.1: Draw the data-flow diagram ⏳
+### Lab 2.1: Draw the data-flow diagram ✅ ([execution guide](../labs/lab-02-threat-modeling.md))
 1. Using the app, the network tab of browser DevTools and `/api` responses, identify the components and data flows.
 2. Draw the DFD as a Mermaid diagram in `threat-models/juice-shop.md` (use the [template](../templates/threat-model.md)).
 3. Mark trust boundaries: browser ↔ API, API ↔ database, cluster ↔ your laptop.
 
-### Lab 2.2: STRIDE the login and checkout flows ⏳
+### Lab 2.2: STRIDE the login and checkout flows ✅ ([threat model](../../threat-models/juice-shop.md))
 1. For each element crossing a trust boundary, ask each STRIDE question.
 2. Aim for 15+ threats. Rate each one with the risk method from [01](01-cia-triad-and-risk.md).
 3. Link each threat to an existing finding, or open a new one in [findings/](../../findings/README.md).

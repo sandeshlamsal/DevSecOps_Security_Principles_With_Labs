@@ -72,6 +72,7 @@ CI checks that **every Markdown page is linked from this index**, so nothing get
 |---|---|---|
 | — | [Principles index](docs/principles/README.md) | How they fit together + short glossary |
 | 01 | [CIA triad and risk](docs/principles/01-cia-triad-and-risk.md) | 1.1 ✅, 1.2 ✅ |
+| 02 | [Threat modelling](docs/principles/02-threat-modeling.md) | 2.1 ✅, 2.2 ✅, 2.3 ✅ |
 | 02 | [Threat modelling](docs/principles/02-threat-modeling.md) | 2.1–2.3 |
 | 03 | [Least privilege](docs/principles/03-least-privilege.md) | 3.1–3.3 |
 | 04 | [Defence in depth](docs/principles/04-defense-in-depth.md) | 4.1–4.3 |
@@ -94,8 +95,10 @@ CI checks that **every Markdown page is linked from this index**, so nothing get
 | [docs/labs/README.md](docs/labs/README.md) | Status of every lab, conventions |
 | [lab-00-foundation.md](docs/labs/lab-00-foundation.md) | ✅ Cluster + Juice Shop + security baseline (9 findings, 3 issues) |
 | [lab-01-cia-and-risk.md](docs/labs/lab-01-cia-and-risk.md) | ✅ Asset inventory, CIA ratings, durability test (3 findings, 2 issues) |
+| [lab-02-threat-modeling.md](docs/labs/lab-02-threat-modeling.md) | ✅ DFD + STRIDE (21 threats, 5 new findings) + OAuth change model |
 | [threat-models/README.md](threat-models/README.md) | Index of threat models |
 | [threat-models/juice-shop-assets.md](threat-models/juice-shop-assets.md) | ✅ 17 assets classified and CIA-rated |
+| [threat-models/juice-shop.md](threat-models/juice-shop.md) | ✅ Full app threat model: DFD + STRIDE, 21 threats |
 
 ---
 

@@ -60,7 +60,7 @@ make open         # http://localhost:3000 (bound to 127.0.0.1 only)
 |---|---|---|---|
 | 00 | [Lab foundation & security baseline](docs/labs/lab-00-foundation.md) | Assess an unfamiliar system | ✅ baseline |
 | 01 | [CIA triad & risk](docs/principles/01-cia-triad-and-risk.md) | Risk-based prioritisation | ✅ 17 assets rated |
-| 02 | [Threat modelling](docs/principles/02-threat-modeling.md) | Design review (STRIDE) | ⏳ |
+| 02 | [Threat modelling](docs/principles/02-threat-modeling.md) | Design review (STRIDE) | ✅ 21 threats |
 | 03 | [Least privilege](docs/principles/03-least-privilege.md) | K8s/cloud identity hardening | ⏳ |
 | 04 | [Defence in depth](docs/principles/04-defense-in-depth.md) | NetworkPolicy, Pod Security | ⏳ |
 | 05 | [Minimise attack surface](docs/principles/05-attack-surface-reduction.md) | Exposure management | ⏳ |

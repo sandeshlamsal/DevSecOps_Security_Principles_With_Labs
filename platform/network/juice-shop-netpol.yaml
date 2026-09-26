@@ -31,3 +31,27 @@ spec:
       ports:
         - {port: 53, protocol: UDP}
         - {port: 53, protocol: TCP}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-proxy
+  namespace: juice-shop
+spec:
+  podSelector:
+    matchLabels: {app: juice-shop-proxy}
+  policyTypes: [Ingress, Egress]
+  ingress:
+    - ports:
+        - {port: 8080, protocol: TCP}      # from the port-forward / a real ingress controller
+  egress:
+    - to:                                   # reach the app
+        - podSelector: {matchLabels: {app: juice-shop}}
+      ports:
+        - {port: 3000, protocol: TCP}
+    - to:                                   # DNS
+        - namespaceSelector: {}
+          podSelector: {matchLabels: {k8s-app: kube-dns}}
+      ports:
+        - {port: 53, protocol: UDP}
+        - {port: 53, protocol: TCP}

@@ -16,6 +16,7 @@ semgrep scan --config p/github-actions --metrics=off --error --quiet .github/
 
 step "3/6 Kubernetes misconfiguration: Trivy config on apps/ (exceptions: .trivyignore, each with exp: date)"
 trivy config --quiet --exit-code 1 apps/
+trivy config --quiet --exit-code 1 platform/proxy/
 
 step "4/6 Infrastructure as code: Checkov on infra/azure (exceptions: inline checkov:skip with EXC-nnn)"
 checkov -d infra/azure --skip-download --framework terraform --var-file infra/azure/terraform.tfvars.example --quiet --compact

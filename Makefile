@@ -27,9 +27,10 @@ undeploy: ## Remove Juice Shop
 status: ## Show pod status
 	kubectl get pods -n $(NAMESPACE) -o wide
 
-open: ## Port-forward Juice Shop to http://localhost:3000 (bound to 127.0.0.1 only)
-	@echo "Juice Shop: http://localhost:3000   (score board: http://localhost:3000/#/score-board)"
-	kubectl port-forward --address 127.0.0.1 -n $(NAMESPACE) svc/juice-shop 3000:3000
+open: ## Port-forward Juice Shop VIA THE HARDENED PROXY to http://localhost:3000 (127.0.0.1 only)
+	@echo "Juice Shop (via proxy): http://localhost:3000   (score board: http://localhost:3000/#/score-board)"
+	@echo "The proxy blocks /ftp, /encryptionkeys, /support/logs, /metrics, /infrastructure (plan B1)."
+	kubectl port-forward --address 127.0.0.1 -n $(NAMESPACE) svc/juice-shop-proxy 3000:8080
 
 ci: ## Run all CI checks locally (same script as GitHub Actions)
 	scripts/ci.sh

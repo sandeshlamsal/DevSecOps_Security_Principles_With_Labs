@@ -1,0 +1,57 @@
+# Hardened reverse proxy (unprivileged nginx) that virtual-patches the exposed-path findings (B1).
+# Passes Pod Security "restricted". Config is in the nginx-config ConfigMap (from platform/proxy/nginx.conf).
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-shop-proxy
+  namespace: juice-shop
+  labels: {app: juice-shop-proxy}
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {app: juice-shop-proxy}
+  template:
+    metadata:
+      labels: {app: juice-shop-proxy}
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 101
+        runAsGroup: 101
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+        - name: nginx
+          image: nginxinc/nginx-unprivileged:1.29-alpine@sha256:0c79d56aee561a1d81c63f00eee5fb5fe29279560cdc55e91425133104c7fbe6  # digest-pinned
+          ports:
+            - containerPort: 8080
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities: {drop: ["ALL"]}
+            readOnlyRootFilesystem: true       # nginx writes only to the emptyDir mounts below
+          resources:
+            requests: {cpu: 50m, memory: 32Mi}
+            limits: {cpu: 200m, memory: 64Mi}
+          volumeMounts:
+            - {name: config, mountPath: /etc/nginx/nginx.conf, subPath: nginx.conf, readOnly: true}
+            - {name: tmp, mountPath: /tmp}
+            - {name: cache, mountPath: /var/cache/nginx}
+          readinessProbe:
+            httpGet: {path: /rest/admin/application-version, port: 8080}
+            initialDelaySeconds: 5
+            periodSeconds: 5
+      volumes:
+        - name: config
+          configMap: {name: nginx-config}
+        - {name: tmp, emptyDir: {}}
+        - {name: cache, emptyDir: {}}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: juice-shop-proxy
+  namespace: juice-shop
+spec:
+  selector: {app: juice-shop-proxy}
+  ports:
+    - {port: 8080, targetPort: 8080}

@@ -103,6 +103,7 @@ CI checks that **every Markdown page is linked from this index**, so nothing get
 | [lab-03-attack-surface-and-defaults.md](docs/labs/lab-03-attack-surface-and-defaults.md) | ✅ Attack-surface inventory + secure-defaults review (2 new findings, 1 downgrade) |
 | [lab-04-least-privilege.md](docs/labs/lab-04-least-privilege.md) | ✅ Pod hardening: SA token, securityContext, RBAC (F-001/002/009/021 fixed) |
 | [lab-05-defense-in-depth.md](docs/labs/lab-05-defense-in-depth.md) | ✅ Default-deny NetworkPolicy + Pod Security enforce (F-003/004 fixed) |
+| [lab-06-virtual-patch-proxy.md](docs/labs/lab-06-virtual-patch-proxy.md) | ✅ Hardened reverse proxy blocks exposed paths (B1; F-005/006/013/014/015) |
 | [threat-models/README.md](threat-models/README.md) | Index of threat models |
 | [threat-models/juice-shop-assets.md](threat-models/juice-shop-assets.md) | ✅ 17 assets classified and CIA-rated |
 | [threat-models/juice-shop.md](threat-models/juice-shop.md) | ✅ Full app threat model: DFD + STRIDE, 21 threats |
@@ -200,6 +201,7 @@ CI checks that **every Markdown page is linked from this index**, so nothing get
 | [apps/juice-shop/juice-shop.yaml](apps/juice-shop/juice-shop.yaml) | The app's Kubernetes manifest (**hardened** in Lab 4: passes `trivy config` clean) |
 | [platform/kind/cluster.yaml](platform/kind/cluster.yaml) | Local 3-node kind cluster |
 | [platform/network/juice-shop-netpol.yaml](platform/network/juice-shop-netpol.yaml) | Default-deny + narrow-allow NetworkPolicy (F-003) |
+| [platform/proxy/](platform/proxy/) | Hardened reverse proxy (virtual patch B1): [manifest](platform/proxy/juice-shop-proxy.yaml), [nginx.conf](platform/proxy/nginx.conf) |
 | [platform/kyverno/policies/](platform/kyverno/policies/) | Admission policies: [PSS restricted](platform/kyverno/policies/pod-security-restricted.yaml), [no SA token](platform/kyverno/policies/no-service-account-token.yaml), [trusted + pinned images](platform/kyverno/policies/images-trusted-and-pinned.yaml) |
 | [platform/kyverno/cluster-only/verify-image-signatures.yaml](platform/kyverno/cluster-only/verify-image-signatures.yaml) | Signature verification (needs a live cluster) |
 | [gitops/apps/juice-shop.yaml](gitops/apps/juice-shop.yaml) | Argo CD Application (selfHeal) |

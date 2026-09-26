@@ -12,3 +12,9 @@ KSV-0125 exp:2027-01-31
 # Security "restricted" (Trivy KSV-0014 is stricter). Compensating: non-root, all caps dropped, no
 # privilege escalation, seccomp RuntimeDefault. Revisit with scoped emptyDir mounts.
 KSV-0014 exp:2027-03-31
+#
+# EXC-008: the reverse proxy uses nginx-unprivileged, which is built to run as uid/gid 101 (<=10000).
+# LOW severity (host-uid-collision hardening), not part of Pod Security "restricted". Compensating:
+# non-root, all caps dropped, no privilege escalation, read-only root FS, seccomp RuntimeDefault.
+KSV-0020 exp:2027-06-30
+KSV-0021 exp:2027-06-30

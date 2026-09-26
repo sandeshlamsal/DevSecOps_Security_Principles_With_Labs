@@ -35,7 +35,7 @@ routine internet-wide scanning.
 2. Explain in two sentences why distroless reduces risk, and what it makes harder (debugging), plus how to debug anyway
    (`kubectl debug` with an ephemeral container).
 
-### Lab 5.3: Close the doors ⏳
+### Lab 5.3: Close the doors ✅ ([execution guide](../labs/lab-06-virtual-patch-proxy.md))
 1. Decide, for F-005 and F-006, whether to remove, restrict or accept. Record the reasoning in the finding.
 2. Implement it at the layer you control (for example, an ingress rule that blocks `/ftp` and `/metrics` from outside).
    Note the trade-off: fixing it at the edge is fast, fixing it in the app is durable. Real teams often do both.

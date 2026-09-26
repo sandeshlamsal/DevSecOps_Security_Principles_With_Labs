@@ -28,19 +28,19 @@ the workload needed, which turned one bug into a breach of about 100 million rec
 
 ## Hands-on labs
 
-### Lab 3.1: Remove the service-account token ⏳
+### Lab 3.1: Remove the service-account token ✅ ([execution guide](../labs/lab-04-least-privilege.md))
 1. Confirm the finding: `kubectl -n juice-shop get pod -l app=juice-shop -o jsonpath='{.items[0].spec.containers[0].volumeMounts}'`
 2. Create a dedicated ServiceAccount for Juice Shop, and set `automountServiceAccountToken: false` in the pod spec.
 3. Redeploy, then re-run step 1 and confirm the token mount is gone. Update F-001 to *Fixed* with the evidence.
 
-### Lab 3.2: Harden the container securityContext ⏳
+### Lab 3.2: Harden the container securityContext ✅ ([execution guide](../labs/lab-04-least-privilege.md))
 1. Add `runAsNonRoot: true`, `allowPrivilegeEscalation: false`, `capabilities: {drop: [ALL]}`, `readOnlyRootFilesystem: true`,
    and `seccompProfile: {type: RuntimeDefault}`.
 2. Redeploy. If the app fails (it may need to write to a directory), find out **which** path it writes to and mount an
    `emptyDir` there only. That debugging loop is exactly the day-to-day work of a DevSecOps engineer.
 3. Record each issue you hit in the lab guide's issues log.
 
-### Lab 3.3: RBAC review ⏳
+### Lab 3.3: RBAC review ✅ ([execution guide](../labs/lab-04-least-privilege.md))
 1. `kubectl auth can-i --list --as=system:serviceaccount:juice-shop:default -n juice-shop`
 2. Explain each permission in the output. Then create a Role and RoleBinding for a "juice-shop-readonly" human user that
    can only `get`/`list` pods and logs in that namespace, and prove it with `kubectl auth can-i`.

@@ -1,16 +1,14 @@
-# Known debt in apps/juice-shop/juice-shop.yaml (the deliberately unhardened "before" manifest from Lab 0).
-# Every entry is exception EXC-005 in SECURITY-EXCEPTIONS.md and EXPIRES when roadmap week 27 (plan step A1) starts:
-# after that date `make security-scan` and CI fail until the manifest is hardened.
-KSV-0001 exp:2027-03-29
-KSV-0003 exp:2027-03-29
-KSV-0004 exp:2027-03-29
-KSV-0011 exp:2027-03-29
-KSV-0012 exp:2027-03-29
-KSV-0014 exp:2027-03-29
-KSV-0020 exp:2027-03-29
-KSV-0021 exp:2027-03-29
-KSV-0030 exp:2027-03-29
-KSV-0104 exp:2027-03-29
-KSV-0106 exp:2027-03-29
-KSV-0118 exp:2027-03-29
-KSV-0125 exp:2027-03-29
+# Scoped Kubernetes-config exceptions. Each needs a matching, unexpired row in SECURITY-EXCEPTIONS.md
+# (enforced by scripts/check-exceptions.py).
+#
+# EXC-006: the deployment runs the pinned UPSTREAM image from Docker Hub (docker.io/bkimminich/juice-shop),
+# which Trivy treats as an untrusted registry. Deliberate for now: we run the official Juice Shop image.
+# The trusted-registry control is enforced in Phase 3 (build our own signed image to GHCR + Kyverno
+# images-trusted-and-pinned policy). Expires when that lands.
+KSV-0125 exp:2027-01-31
+#
+# EXC-007: readOnlyRootFilesystem not set. Juice Shop writes into its own served app directory
+# (frontend/dist, ftp, logs, uploads, data), so a read-only root FS breaks it. NOT required by Pod
+# Security "restricted" (Trivy KSV-0014 is stricter). Compensating: non-root, all caps dropped, no
+# privilege escalation, seccomp RuntimeDefault. Revisit with scoped emptyDir mounts.
+KSV-0014 exp:2027-03-31

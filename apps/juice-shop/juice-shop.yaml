@@ -1,10 +1,17 @@
 # OWASP Juice Shop: an intentionally insecure web app for security training.
-# Phase 0 deploys it AS-IS (the "before" picture). Later phases harden this manifest
-# and record each change in the phase guide. It is only ever exposed on localhost.
+# The APP is deliberately vulnerable; the DEPLOYMENT is hardened (Lab 3, plan step A1).
+# Reachable on 127.0.0.1 only. Each securityContext line closes an audit finding.
 apiVersion: v1
 kind: Namespace
 metadata:
   name: juice-shop
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+automountServiceAccountToken: false          # F-001: the app never calls the Kubernetes API
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -20,14 +27,27 @@ spec:
     metadata:
       labels: {app: juice-shop}
     spec:
+      serviceAccountName: juice-shop
+      automountServiceAccountToken: false      # F-001 (also set on the pod)
+      securityContext:
+        runAsNonRoot: true                     # assert non-root (image already uses UID 65532)
+        runAsUser: 65532
+        runAsGroup: 65532
+        seccompProfile: {type: RuntimeDefault} # filter dangerous syscalls
       containers:
         - name: juice-shop
-          image: bkimminich/juice-shop:v20.2.0   # pinned; bump deliberately and note it in docs/labs/
+          # F-009: pinned by immutable digest (v20.2.0). Bump deliberately; note it in docs/labs/.
+          image: bkimminich/juice-shop:v20.2.0@sha256:8739101ade29358abb5469ee66ae78e582c97ed0a5543a4ad102e5fa5193526b
           ports:
             - containerPort: 3000
+          securityContext:
+            allowPrivilegeEscalation: false    # F-002: no setuid escalation
+            capabilities: {drop: ["ALL"]}      # F-002: drop all Linux capabilities
+            # readOnlyRootFilesystem is NOT set: Juice Shop writes into its own served app
+            # directory (frontend/dist, ftp, logs, uploads, data). Scoped exception EXC-006.
           resources:
             requests: {cpu: 100m, memory: 256Mi}
-            limits: {memory: 512Mi}
+            limits: {cpu: "1", memory: 512Mi}  # F-021: CPU limit (availability / one pod can't starve the node)
           readinessProbe:
             httpGet: {path: /rest/admin/application-version, port: 3000}
             initialDelaySeconds: 10

@@ -24,7 +24,7 @@ routine internet-wide scanning.
 
 ## Hands-on labs
 
-### Lab 5.1: Enumerate your own attack surface ⏳
+### Lab 5.1: Enumerate your own attack surface ✅ ([execution guide](../labs/lab-03-attack-surface-and-defaults.md))
 1. From the browser's DevTools network tab and `main.js`, list every API route the frontend calls.
 2. Check each one with `curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:3000<path>` **without logging in**.
 3. Build a table: route, requires auth (yes/no), what it exposes, whether it's needed. That table is your attack-surface inventory.

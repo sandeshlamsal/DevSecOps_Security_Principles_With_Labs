@@ -20,13 +20,13 @@ change the default.
 
 ## Hands-on labs
 
-### Lab 6.1: Security-header review ⏳
+### Lab 6.1: Security-header review ✅ ([execution guide](../labs/lab-03-attack-surface-and-defaults.md))
 1. `curl -sI http://127.0.0.1:3000/` and compare the output with the [OWASP Secure Headers](https://owasp.org/www-project-secure-headers/) recommendations.
 2. For each missing header, write what it prevents and whether it applies here (for example, HSTS only matters over HTTPS).
 3. Draft a CSP that allows only the app's own origin. Test it in **report-only** mode first
    (`Content-Security-Policy-Report-Only`) and read the violations in the browser console.
 
-### Lab 6.2: Error handling ⏳
+### Lab 6.2: Error handling ✅ ([execution guide](../labs/lab-03-attack-surface-and-defaults.md))
 1. Request a route that doesn't exist, and send malformed JSON to an API.
 2. Record what the error reveals (framework, versions, stack traces, file paths).
 3. Write the fix as a finding: generic error to the user, full detail to the server log with a correlation ID.

@@ -77,6 +77,9 @@ CI checks that **every Markdown page is linked from this index**, so nothing get
 | 03 | [Least privilege](docs/principles/03-least-privilege.md) | 3.1 ✅, 3.2 ✅, 3.3 ✅ |
 | 04 | [Defence in depth](docs/principles/04-defense-in-depth.md) | 4.1 ✅, 4.2 ✅ |
 | 06 | [Secure defaults](docs/principles/06-secure-defaults.md) | 6.1 ✅, 6.2 ✅ |
+| 07 | [Never trust input](docs/principles/07-never-trust-input.md) | 7.1 ✅, 7.3 ✅ |
+| 11 | [Shift left](docs/principles/11-shift-left-automation.md) | 11.1 ✅, 11.2 ✅, 11.3 ✅ |
+| 13 | [AI-era security](docs/principles/13-ai-era-security.md) | 13.1 ✅, 13.2 ✅ |
 | 02 | [Threat modelling](docs/principles/02-threat-modeling.md) | 2.1–2.3 |
 | 03 | [Least privilege](docs/principles/03-least-privilege.md) | 3.1–3.3 |
 | 04 | [Defence in depth](docs/principles/04-defense-in-depth.md) | 4.1–4.3 |
@@ -106,9 +109,11 @@ CI checks that **every Markdown page is linked from this index**, so nothing get
 | [lab-06-virtual-patch-proxy.md](docs/labs/lab-06-virtual-patch-proxy.md) | ✅ Hardened reverse proxy blocks exposed paths (B1; F-005/006/013/014/015) |
 | [lab-07-sast-supply-chain.md](docs/labs/lab-07-sast-supply-chain.md) | ✅ Custom SAST rule (F-016 regression gate) + build/scan/SBOM/sign pipeline (M2–M3) |
 | [lab-08-precommit-and-baselines.md](docs/labs/lab-08-precommit-and-baselines.md) | ✅ Pre-commit hooks (gitleaks + custom SAST) + baseline/exceptions model |
+| [lab-09-ai-security.md](docs/labs/lab-09-ai-security.md) | ✅ LLM chatbot review vs OWASP LLM Top 10 (F-032–F-035) |
 | [threat-models/README.md](threat-models/README.md) | Index of threat models |
 | [threat-models/juice-shop-assets.md](threat-models/juice-shop-assets.md) | ✅ 17 assets classified and CIA-rated |
 | [threat-models/juice-shop.md](threat-models/juice-shop.md) | ✅ Full app threat model: DFD + STRIDE, 21 threats |
+| [threat-models/juice-shop-chatbot.md](threat-models/juice-shop-chatbot.md) | ✅ LLM chatbot threat model: OWASP LLM Top 10 |
 
 ---
 

@@ -88,12 +88,12 @@ triaging SAST/SCA results, and writing threat-model first drafts. Use it the way
 
 ## Hands-on labs
 
-### Lab 13.1: Threat-model the AI feature ⏳
+### Lab 13.1: Threat-model the AI feature ✅ ([execution guide](../labs/lab-09-ai-security.md))
 1. Read how the chatbot is wired in the source (`tmp/juice-shop`, search for the LLM client and the chatbot route).
 2. Draw its data flow: user → API → model provider → tools/data it can reach → output back to the browser.
 3. Walk each flow through the OWASP LLM Top 10 table above, not only STRIDE. Record threats in `threat-models/`.
 
-### Lab 13.2: Review the integration code ⏳
+### Lab 13.2: Review the integration code ✅ ([execution guide](../labs/lab-09-ai-security.md))
 Answer from the code, with file and line references:
 1. Is the model's output inserted into the page safely (LLM05)?
 2. What data and actions can the model reach, and whose permissions are used (LLM06, LLM08)?

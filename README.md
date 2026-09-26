@@ -38,8 +38,8 @@ make open         # http://localhost:3000 (bound to 127.0.0.1 only)
 
 | # | Principle | Role skill it proves | Status |
 |---|---|---|---|
-| 00 | [Lab foundation & security baseline](docs/labs/lab-00-foundation.md) | Assess an unfamiliar system | ✅ 9 findings |
-| 01 | [CIA triad & risk](docs/principles/01-cia-triad-and-risk.md) | Risk-based prioritisation | 🟡 |
+| 00 | [Lab foundation & security baseline](docs/labs/lab-00-foundation.md) | Assess an unfamiliar system | ✅ baseline |
+| 01 | [CIA triad & risk](docs/principles/01-cia-triad-and-risk.md) | Risk-based prioritisation | ✅ 17 assets rated |
 | 02 | [Threat modelling](docs/principles/02-threat-modeling.md) | Design review (STRIDE) | ⏳ |
 | 03 | [Least privilege](docs/principles/03-least-privilege.md) | K8s/cloud identity hardening | ⏳ |
 | 04 | [Defence in depth](docs/principles/04-defense-in-depth.md) | NetworkPolicy, Pod Security | ⏳ |
@@ -53,7 +53,7 @@ make open         # http://localhost:3000 (bound to 127.0.0.1 only)
 | 12 | [Assume breach](docs/principles/12-assume-breach.md) | Detection, incident response | ⏳ |
 | 13 | [Security in the AI era](docs/principles/13-ai-era-security.md) | LLM app security, AI-driven threats | ⏳ |
 
-Findings so far: [finding register](findings/README.md).
+**Security audit:** 24 issues found so far (1 Critical, 8 High). See the [remediation plan](findings/REMEDIATION.md) for every issue, its fix, how to verify it, and the CI gate that keeps it fixed. Status per issue: [finding register](findings/README.md).
 
 ## Repository layout
 
@@ -67,7 +67,7 @@ Findings so far: [finding register](findings/README.md).
 | [docs/security-way.md](docs/security-way.md) | Our operating rules (ethics, secrets, evidence) |
 | [docs/adr/](docs/adr/) | Architecture Decision Records |
 | [docs/templates/](docs/templates/) | Threat model, finding and security-incident templates |
-| [findings/](findings/README.md) | Finding register: every weakness found, its risk and its status |
+| [findings/](findings/README.md) | Finding register + [security audit & remediation plan](findings/REMEDIATION.md) |
 | [threat-models/](threat-models/README.md) | Threat models (Phase 1 onward) |
 | [apps/juice-shop/](apps/juice-shop/) | The app's Kubernetes manifest, hardened lab by lab |
 | [platform/](platform/) | Cluster config |

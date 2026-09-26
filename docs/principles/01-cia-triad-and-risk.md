@@ -33,7 +33,7 @@ and exposes internal documents (confidentiality).
 
 ## Hands-on labs
 
-### Lab 1.1: Asset inventory and CIA rating ⏳
+### Lab 1.1: Asset inventory and CIA rating ✅ ([execution guide](../labs/lab-01-cia-and-risk.md))
 1. `make open`, then browse the shop as a normal customer: register, add to basket, check out, write a review.
 2. List every **data asset** you touched (accounts, passwords, addresses, payment cards, orders, reviews, product catalogue).
 3. For each asset, rate C, I and A as High/Medium/Low. Payment cards: C=High. Product catalogue: C=Low, I=High.

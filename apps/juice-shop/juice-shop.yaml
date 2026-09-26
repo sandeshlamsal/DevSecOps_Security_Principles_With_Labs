@@ -1,0 +1,45 @@
+# OWASP Juice Shop: an intentionally insecure web app for security training.
+# Phase 0 deploys it AS-IS (the "before" picture). Later phases harden this manifest
+# and record each change in the phase guide. It is only ever exposed on localhost.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: juice-shop
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+  labels: {app: juice-shop}
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {app: juice-shop}
+  template:
+    metadata:
+      labels: {app: juice-shop}
+    spec:
+      containers:
+        - name: juice-shop
+          image: bkimminich/juice-shop:v20.2.0   # pinned; bump deliberately and note it in docs/labs/
+          ports:
+            - containerPort: 3000
+          resources:
+            requests: {cpu: 100m, memory: 256Mi}
+            limits: {memory: 512Mi}
+          readinessProbe:
+            httpGet: {path: /rest/admin/application-version, port: 3000}
+            initialDelaySeconds: 10
+            periodSeconds: 5
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: juice-shop
+  namespace: juice-shop
+spec:
+  selector: {app: juice-shop}
+  ports:
+    - port: 3000
+      targetPort: 3000

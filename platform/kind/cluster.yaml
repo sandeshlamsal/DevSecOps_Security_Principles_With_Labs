@@ -1,0 +1,13 @@
+# Local lab cluster: 1 control plane + 2 workers, so later phases can practise
+# NetworkPolicy between nodes, Pod Security admission and node-level runtime detection.
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: secops-lab
+# Node image pinned for reproducibility (Kubernetes v1.35.0, default for kind v0.31.0).
+nodes:
+  - role: control-plane
+    image: kindest/node:v1.35.0
+  - role: worker
+    image: kindest/node:v1.35.0
+  - role: worker
+    image: kindest/node:v1.35.0

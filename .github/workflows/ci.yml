@@ -1,0 +1,18 @@
+# CI for the DevSecOps lab: the same checks as `make ci`, on every push and PR.
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install kubeconform
+        run: curl -sSL https://github.com/yannh/kubeconform/releases/download/v0.8.0/kubeconform-linux-amd64.tar.gz | sudo tar -xz -C /usr/local/bin kubeconform
+      - name: Run CI checks (scripts/ci.sh)
+        run: scripts/ci.sh

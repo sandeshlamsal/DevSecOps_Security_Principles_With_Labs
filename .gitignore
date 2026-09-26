@@ -1,0 +1,10 @@
+.DS_Store
+*.log
+.env
+.env.*
+kubeconfig*
+.idea/
+.vscode/
+tmp/
+# Scanner output is regenerated; commit curated findings in findings/, not raw reports
+reports/

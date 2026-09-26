@@ -2,3 +2,6 @@
 # 2026-09-26: Lab 1 guide showed the first 36 chars of a JWT = only its Base64 header {"typ":"JWT","alg":"RS256"}, for a deleted
 # local test user. No signature or claims. Replaced with a placeholder; this fingerprint covers the copy in commit history.
 051f171e25b797f8157e52dad2a7dfd6519c44f9:docs/labs/lab-01-cia-and-risk.md:generic-api-key:22
+# 2026-09-26: an INDEX.md table cell of slash-joined payment acronyms matched generic-api-key (high entropy, not a secret).
+# Plain documentation text, no secret. Reworded; this fingerprint covers the copy in commit b4ee9f8.
+b4ee9f8a8f33a8e260f54b746a8cc5a3e80d935d:INDEX.md:generic-api-key:139

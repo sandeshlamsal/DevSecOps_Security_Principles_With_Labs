@@ -8,6 +8,8 @@ step(){ echo; echo "==> $*"; }
 
 step "1/6 Secrets: gitleaks over the full git history (F-010/F-013/F-015 class)"
 gitleaks git . --redact --no-banner --exit-code 1
+# ...and uncommitted changes, so running this BEFORE `git commit` catches what CI would (a gap found 2026-09-26)
+gitleaks git . --pre-commit --redact --no-banner --exit-code 1
 
 step "2/6 CI supply chain: Semgrep GitHub Actions rules (F-023 class: unpinned actions, script injection)"
 semgrep scan --config p/github-actions --metrics=off --error --quiet .github/

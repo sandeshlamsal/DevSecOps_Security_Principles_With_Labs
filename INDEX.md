@@ -136,7 +136,7 @@ CI checks that **every Markdown page is linked from this index**, so nothing get
 | [docs/grc/README.md](docs/grc/README.md) | GRC terms, **internal/external audits** (when and how), compliance calendar, this repo as audit evidence |
 | [docs/grc/standards-and-regulations.md](docs/grc/standards-and-regulations.md) | ISO 27001 family, SOC 2, **FedRAMP**, CMMC, HIPAA, SOX, SEC, CCPA, **GDPR, NIS2, DORA, CRA, EU AI Act**, other regions, overlap map |
 | [docs/grc/privacy-and-pii.md](docs/grc/privacy-and-pii.md) | **PII**, privacy principles, rights, DPIAs, technical controls, breach-notification deadlines |
-| [docs/grc/payments-atm-edi.md](docs/grc/payments-atm-edi.md) | **PCI DSS v4**, scope reduction, EMV/3DS/tokenisation, HSMs/DUKPT/PIN blocks, **ATM security**, **EDI** (AS2, X12, EDIFACT), SWIFT/ISO 20022 |
+| [docs/grc/payments-atm-edi.md](docs/grc/payments-atm-edi.md) | **PCI DSS v4**, scope reduction, EMV and 3-D Secure, tokenisation, payment HSMs, DUKPT and PIN blocks, **ATM security**, **EDI** (AS2, X12, EDIFACT), SWIFT/ISO 20022 |
 | [docs/grc/security-awareness-phishing-simulation.md](docs/grc/security-awareness-phishing-simulation.md) | How authorised phishing simulations are run, tracked and measured |
 
 ---

@@ -11,7 +11,7 @@ executed, its **execution guide** (the real commands, output and issues) is adde
 | [01 CIA triad & risk](../principles/01-cia-triad-and-risk.md) | 1.1 assets · 1.2 risk-rating | [lab-01-cia-and-risk.md](lab-01-cia-and-risk.md) | ✅ 2026-09-26 · 3 new findings, 2 issues |
 | [02 Threat modelling](../principles/02-threat-modeling.md) | 2.1 DFD · 2.2 STRIDE · 2.3 change model | [lab-02-threat-modeling.md](lab-02-threat-modeling.md) | ✅ 2026-09-26 · 21 threats, 5 new findings |
 | [03 Least privilege](../principles/03-least-privilege.md) | 3.1 SA token · 3.2 securityContext · 3.3 RBAC | [lab-04-least-privilege.md](lab-04-least-privilege.md) | ✅ 2026-09-26 · F-001/002/009/021 fixed |
-| [04 Defence in depth](../principles/04-defense-in-depth.md) | 4.1 NetworkPolicy · 4.2 Pod Security · 4.3 layer map | — | ⏳ |
+| [04 Defence in depth](../principles/04-defense-in-depth.md) | 4.1 NetworkPolicy · 4.2 Pod Security · 4.3 layer map | [lab-05-defense-in-depth.md](lab-05-defense-in-depth.md) | 🟡 4.1 ✅ · 4.2 ✅ · 4.3 ⏳ |
 | [05 Attack surface](../principles/05-attack-surface-reduction.md) | 5.1 enumerate · 5.2 image surface · 5.3 close doors | [lab-03-attack-surface-and-defaults.md](lab-03-attack-surface-and-defaults.md) | 🟡 5.1 ✅ · 5.2–5.3 ⏳ |
 | [06 Secure defaults](../principles/06-secure-defaults.md) | 6.1 headers/CSP · 6.2 error handling | [lab-03-attack-surface-and-defaults.md](lab-03-attack-surface-and-defaults.md) | ✅ 2026-09-26 · 2 new findings |
 | [07 Never trust input](../principles/07-never-trust-input.md) | 7.1 SAST · 7.2 fix · 7.3 custom rule | — | ⏳ |

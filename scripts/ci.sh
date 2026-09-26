@@ -7,7 +7,7 @@ step(){ echo; echo "==> $*"; }
 
 step "1/3 kubeconform: our manifests"
 # platform/kind/cluster.yaml is a kind config, not a Kubernetes resource, so it is not validated here
-kubeconform -strict -summary -kubernetes-version 1.35.0 apps/
+kubeconform -strict -summary -kubernetes-version 1.35.0 apps/ platform/network/
 
 step "2/3 kubeconform: custom resources (Argo CD, Kyverno) via the datree CRD schema catalog"
 kubeconform -strict -summary -kubernetes-version 1.35.0 -schema-location default \

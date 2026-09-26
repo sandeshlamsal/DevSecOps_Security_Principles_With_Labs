@@ -11,8 +11,8 @@ with the principle it breaks and the lab that fixes it. New findings use the [fi
 |---|---|---|---|---|---|---|---|
 | F-001 | [Lab 0](../docs/labs/lab-00-foundation.md#step-4-security-posture-baseline) | Pod uses the `default` service account and its API token is auto-mounted | C, I | Medium | [03 Least privilege](../docs/principles/03-least-privilege.md) | Lab 3.1 | **Fixed** 2026-09-26 |
 | F-002 | Lab 0 | No container `securityContext`: privilege escalation allowed, capabilities not dropped, root filesystem writable, no seccomp profile | I | Medium | [03 Least privilege](../docs/principles/03-least-privilege.md) | Lab 3.2 | **Fixed** 2026-09-26 |
-| F-003 | Lab 0 | No NetworkPolicies: flat pod network, any pod can reach any pod | C, I | Medium | [04 Defence in depth](../docs/principles/04-defense-in-depth.md) | Lab 4.1 | Open |
-| F-004 | Lab 0 | Namespace has no Pod Security Admission labels: hardening isn't enforced | I | Medium | [04 Defence in depth](../docs/principles/04-defense-in-depth.md) | Lab 4.2 | Open |
+| F-003 | Lab 0 | No NetworkPolicies: flat pod network, any pod can reach any pod | C, I | Medium | [04 Defence in depth](../docs/principles/04-defense-in-depth.md) | Lab 4.1 | **Fixed** 2026-09-26 (Lab 5) |
+| F-004 | Lab 0 | Namespace has no Pod Security Admission labels: hardening isn't enforced | I | Medium | [04 Defence in depth](../docs/principles/04-defense-in-depth.md) | Lab 4.2 | **Fixed** 2026-09-26 (Lab 5) |
 | F-005 | Lab 0 | `/ftp` is a public, unauthenticated directory listing exposing internal documents (Lab 1.1 source review: includes a password-manager database `incident-support.kdbx` and `.bak` backup files) | C | **High** | [05 Attack surface](../docs/principles/05-attack-surface-reduction.md) | Lab 5.3 | Open |
 | F-006 | Lab 0 | `/metrics` served on the public port without authentication | C | Low | [05 Attack surface](../docs/principles/05-attack-surface-reduction.md) | Lab 5.3 | Open |
 | F-007 | Lab 0 | `Access-Control-Allow-Origin: *` on API responses | C | Medium | [06 Secure defaults](../docs/principles/06-secure-defaults.md) | Lab 6.1 | Open |

@@ -27,13 +27,13 @@ payment cards. Network segmentation would have been a second layer the stolen cr
 
 ## Hands-on labs
 
-### Lab 4.1: Default-deny networking ⏳
+### Lab 4.1: Default-deny networking ✅ ([execution guide](../labs/lab-05-defense-in-depth.md))
 1. Deploy a throwaway client pod in another namespace and confirm it can reach `juice-shop.juice-shop:3000` (it can: flat network).
 2. Apply a default-deny NetworkPolicy to `juice-shop`, then allow only the ingress you need.
 3. Re-test from the client pod and record the before/after output. (Note: kind's default CNI, kindnet, supports NetworkPolicy
    from kind v0.24+. If a policy has no effect, that's an issue worth logging.)
 
-### Lab 4.2: Enforce Pod Security Standards ⏳
+### Lab 4.2: Enforce Pod Security Standards ✅ ([execution guide](../labs/lab-05-defense-in-depth.md))
 1. Label the namespace in **warn/audit** mode first: `kubectl label ns juice-shop pod-security.kubernetes.io/warn=restricted pod-security.kubernetes.io/audit=restricted`
 2. Re-apply the manifest and read the warnings. They're your to-do list.
 3. Once it's clean, switch to `enforce=restricted`. Try to deploy a pod that runs privileged, and capture the rejection.

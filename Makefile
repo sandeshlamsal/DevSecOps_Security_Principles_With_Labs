@@ -18,6 +18,7 @@ cluster-down: ## Delete the local kind cluster
 deploy: ## Deploy OWASP Juice Shop (intentionally vulnerable; localhost only)
 	@grep -q "juice-shop:$(JUICE_SHOP_VERSION)" apps/juice-shop/juice-shop.yaml || { echo "image tag drift: manifest != Makefile $(JUICE_SHOP_VERSION)"; exit 1; }
 	kubectl apply -f apps/juice-shop/juice-shop.yaml
+	kubectl apply -f platform/network/juice-shop-netpol.yaml
 	kubectl -n $(NAMESPACE) rollout status deploy/juice-shop --timeout=300s
 
 undeploy: ## Remove Juice Shop

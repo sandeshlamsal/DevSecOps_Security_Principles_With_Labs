@@ -1,0 +1,23 @@
+# Principle 04 (enforced, not by convention) + 03 (least privilege).
+# Kyverno's built-in Pod Security Standards check, at the "restricted" level. Audit now; Enforce at capstone M5.
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: pod-security-restricted
+  annotations:
+    policies.kyverno.io/title: Pod Security Standards (restricted)
+    secops-lab/fixes: F-002, F-004
+spec:
+  background: true
+  rules:
+    - name: restricted
+      match:
+        any:
+          - resources:
+              kinds: [Pod]
+              namespaces: [juice-shop]
+      validate:
+        failureAction: Audit
+        podSecurity:
+          level: restricted
+          version: latest

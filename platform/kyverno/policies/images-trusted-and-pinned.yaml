@@ -1,0 +1,37 @@
+# Principle 10: only images from trusted registries, pinned by immutable digest.
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: images-trusted-and-pinned
+  annotations:
+    policies.kyverno.io/title: Trusted registries + digest pinning
+    secops-lab/fixes: F-009, F-021
+spec:
+  background: true
+  rules:
+    - name: trusted-registry
+      match:
+        any:
+          - resources:
+              kinds: [Pod]
+              namespaces: [juice-shop]
+      validate:
+        failureAction: Audit
+        message: "Images must come from ghcr.io/sandeshlamsal/ (our signed builds) or the pinned upstream bkimminich/juice-shop."
+        pattern:
+          spec:
+            containers:
+              - image: "ghcr.io/sandeshlamsal/* | bkimminich/juice-shop* | docker.io/bkimminich/juice-shop*"
+    - name: pinned-by-digest
+      match:
+        any:
+          - resources:
+              kinds: [Pod]
+              namespaces: [juice-shop]
+      validate:
+        failureAction: Audit
+        message: "Pin images by digest (@sha256:...); tags can be moved to different content."
+        pattern:
+          spec:
+            containers:
+              - image: "*@sha256:*"

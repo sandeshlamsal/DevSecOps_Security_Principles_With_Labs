@@ -1,0 +1,28 @@
+# Principle 10, capstone M5: admit only images signed by THIS repo's GitHub Actions workflow (Cosign keyless / Sigstore).
+# Needs a live cluster and registry access, so it isn't part of the offline CLI test in scripts/security-scan.sh.
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: verify-image-signatures
+  annotations:
+    policies.kyverno.io/title: Verify Sigstore signatures from our CI
+spec:
+  webhookTimeoutSeconds: 30
+  rules:
+    - name: signed-by-our-workflow
+      match:
+        any:
+          - resources:
+              kinds: [Pod]
+              namespaces: [juice-shop]
+      verifyImages:
+        - imageReferences: ["ghcr.io/sandeshlamsal/*"]
+          failureAction: Audit          # Enforce at M5
+          mutateDigest: true            # rewrite tags to the verified digest
+          attestors:
+            - entries:
+                - keyless:
+                    issuer: https://token.actions.githubusercontent.com
+                    subject: "https://github.com/sandeshlamsal/DevSecOps_Security_Principles_With_Labs/.github/workflows/*"
+                    rekor:
+                      url: https://rekor.sigstore.dev

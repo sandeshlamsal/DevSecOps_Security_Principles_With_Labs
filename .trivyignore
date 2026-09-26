@@ -1,0 +1,16 @@
+# Known debt in apps/juice-shop/juice-shop.yaml (the deliberately unhardened "before" manifest from Lab 0).
+# Every entry is exception EXC-005 in SECURITY-EXCEPTIONS.md and EXPIRES when roadmap week 27 (plan step A1) starts:
+# after that date `make security-scan` and CI fail until the manifest is hardened.
+KSV-0001 exp:2027-03-29
+KSV-0003 exp:2027-03-29
+KSV-0004 exp:2027-03-29
+KSV-0011 exp:2027-03-29
+KSV-0012 exp:2027-03-29
+KSV-0014 exp:2027-03-29
+KSV-0020 exp:2027-03-29
+KSV-0021 exp:2027-03-29
+KSV-0030 exp:2027-03-29
+KSV-0104 exp:2027-03-29
+KSV-0106 exp:2027-03-29
+KSV-0118 exp:2027-03-29
+KSV-0125 exp:2027-03-29

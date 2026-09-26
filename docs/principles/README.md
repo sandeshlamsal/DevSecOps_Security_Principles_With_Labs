@@ -55,6 +55,8 @@ New to the field? Do the [baby steps](../basics/README.md) first. They cover the
 
 ## Glossary
 
+The short list is below. The full glossary of terms and tools is in [GLOSSARY.md](../GLOSSARY.md).
+
 | Term | Meaning |
 |---|---|
 | **Asset** | Something of value: data, a service, credentials, reputation |

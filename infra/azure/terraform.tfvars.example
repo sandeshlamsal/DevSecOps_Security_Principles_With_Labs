@@ -1,0 +1,4 @@
+# Copy to terraform.tfvars (git-ignored) and fill in.
+budget_contact_emails           = ["you@example.com"]
+api_server_authorized_ip_ranges = ["203.0.113.10/32"] # your public IP: curl -s https://ifconfig.me
+aks_admin_group_object_ids      = ["00000000-0000-0000-0000-000000000000"] # az ad group show -g "<group>" --query id -o tsv

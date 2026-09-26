@@ -6,7 +6,7 @@ Work through it in order, tick the boxes as you go, and you'll finish with real 
 ## Contents
 1. [The roles](#the-roles)
 2. [Skills map: what each role needs and where you practise it](#skills-map)
-3. [12-week study plan](#12-week-study-plan)
+3. [Study plan](#study-plan) (full plan: [ROADMAP.md](ROADMAP.md))
 4. [Real-world use cases you can now handle](#real-world-use-cases)
 5. [Daily and weekly practice routine](#practice-routine)
 6. [Build your portfolio from this repo](#portfolio)
@@ -58,27 +58,19 @@ the two neighbouring skills that make you stand out.
 
 ---
 
-## 12-week study plan
+## Study plan
 
-About **8–10 hours a week**: two or three weekday evenings (concepts, reading) plus one longer weekend session (labs).
-Each week ends with a **deliverable** committed to this repo. That's what makes it a portfolio and not just notes.
+**Follow the [roadmap](ROADMAP.md)**: 36 weeks at ~8–10 hours a week, in five phases, with every week linked to lessons, labs and a deliverable.
 
-| Week | Learn | Do (labs) | Deliverable | Interview prep |
+| Phase | Weeks | Focus | Certification | Capstone |
 |---|---|---|---|---|
-| **1** | [Baby steps 1–4](../basics/README.md): networking, Linux, web, crypto | [Lab 0](../labs/lab-00-foundation.md): run the lab and re-take the baseline yourself | Your own notes on each Lab 0 finding | Practise: "How would you assess a service you've never seen?" |
-| **2** | [01 CIA & risk](../principles/01-cia-triad-and-risk.md), [baby step 8 frameworks](../basics/08-frameworks.md) | Labs 1.1–1.2 | `threat-models/juice-shop-assets.md` | 01 questions; CVE vs CWE vs CVSS |
-| **3** | [02 Threat modelling](../principles/02-threat-modeling.md), [stack guide §1–2](../architecture/README.md) | Labs 2.1–2.3 | `threat-models/juice-shop.md` with DFD + 15 threats | Threat-model a payments API out loud (record yourself) |
-| **4** | [Baby step 5](../basics/05-containers-kubernetes.md), [03 Least privilege](../principles/03-least-privilege.md), [stack guide §4–5](../architecture/README.md#4-layer-2-kubernetes-cluster) | Labs 3.1–3.3 | Hardened manifest; F-001, F-002 fixed with evidence | Pod security, RBAC, Capital One story |
-| **5** | [04 Defence in depth](../principles/04-defense-in-depth.md), [05 Attack surface](../principles/05-attack-surface-reduction.md) | Labs 4.1–4.3, 5.1–5.3 | NetworkPolicy + `restricted` PSA enforced; F-003–F-006 closed | Zero trust, lateral movement, distroless |
-| **6** | [Baby step 3](../basics/03-web.md) again, [06 Secure defaults](../principles/06-secure-defaults.md) | Labs 6.1–6.2 | CSP in report-only mode → enforced; F-007, F-008 | CORS and CSP explained without notes |
-| **7** | [Baby step 7](../basics/07-reading-code.md), [07 Never trust input](../principles/07-never-trust-input.md) | Labs 7.1–7.3 | Triage table for 20 SAST results; one real fix; one custom Semgrep rule | SQLi, XSS, SSRF; "400 SAST findings" question |
-| **8** | [08 Identity & access](../principles/08-identity-and-access.md) | Labs 8.1–8.3 | Authz review with file:line references | IDOR, JWT, OAuth flows, MFA fatigue |
-| **9** | [Baby step 6](../basics/06-git-ci.md), [09 Secrets](../principles/09-protect-data-and-secrets.md), [10 Supply chain](../principles/10-supply-chain-integrity.md) | Labs 9.1–9.3, 10.1–10.3 | SBOM, CVE triage with VEX-style notes, signed image enforced by Kyverno | Leaked-key response; Log4Shell and SBOMs; SLSA |
-| **10** | [11 Shift left](../principles/11-shift-left-automation.md) | Labs 11.1–11.3 | CI with secrets, IaC and SAST gates; a PR showing each gate failing | Design a DevSecOps pipeline on a whiteboard |
-| **11** | [12 Assume breach](../principles/12-assume-breach.md), [stack guide §3 cloud](../architecture/README.md#3-layer-1-cloud) | Labs 12.1–12.3 | Falco alert + audit-log evidence; a game-day incident report | NIST IR lifecycle; "shell in a container" scenario |
-| **12** | [13 AI-era security](../principles/13-ai-era-security.md), review everything | Labs 13.1–13.5; mock interviews | Chatbot threat model; AI triage accuracy result; updated résumé | Two full mock interviews (see [below](#interview-preparation)) |
+| 1 | 1–6 | [Security fundamentals](ROADMAP.md#phase-1-security-fundamentals-weeks-16): principles 01–09, OWASP Top 10, STRIDE, crypto | Security+ | — |
+| 2 | 7–16 | [Cloud security on Azure](ROADMAP.md#phase-2-cloud-security-on-azure-weeks-716): identity, network, Key Vault, logging, Defender, Policy | AZ-500 | M1 |
+| 3 | 17–26 | [DevSecOps pipeline](ROADMAP.md#phase-3-devsecops-pipeline-security-weeks-1726): SAST, SCA, IaC, secrets, SBOM, signing | — | M2–M4 |
+| 4 | 27–32 | [Kubernetes security](ROADMAP.md#phase-4-kubernetes-security-weeks-2732): RBAC, PSS, NetworkPolicy, Kyverno, Falco | CKA → CKS | M5–M6 |
+| 5 | 33–36 | [Portfolio + job search](ROADMAP.md#phase-5-portfolio-and-job-search-weeks-3336) | — | M7 |
 
-**Behind schedule?** That's normal. Keep the order, and skip the optional labs (2.3, 4.3, 13.4) rather than skipping principles.
+The [capstone](../capstone/README.md) (a hardened GitOps pipeline) is built step by step from Phase 3, so by Phase 5 you're polishing, not starting.
 
 ---
 

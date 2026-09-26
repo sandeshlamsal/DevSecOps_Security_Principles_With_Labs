@@ -1,0 +1,4 @@
+# Verified false positives only (real secrets are rotated, never ignored). One line per gitleaks fingerprint.
+# 2026-09-26: Lab 1 guide showed the first 36 chars of a JWT = only its Base64 header {"typ":"JWT","alg":"RS256"}, for a deleted
+# local test user. No signature or claims. Replaced with a placeholder; this fingerprint covers the copy in commit history.
+051f171e25b797f8157e52dad2a7dfd6519c44f9:docs/labs/lab-01-cia-and-risk.md:generic-api-key:22

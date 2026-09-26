@@ -19,7 +19,7 @@ curl -s -H 'Content-Type: application/json' -d "{\"email\":\"$E\",\"password\":\
 ```
 ```
 register: 201
-{"authentication":{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9...     (a 741-character JWT)
+{"authentication":{"token":"<a 741-character JWT: never paste real tokens into docs>", ...
 ```
 The browser also asks for addresses, payment cards and a wallet during checkout. Each is a data asset.
 

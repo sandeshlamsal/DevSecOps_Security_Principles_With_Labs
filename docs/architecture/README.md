@@ -2,7 +2,7 @@
 
 The [principles](../principles/README.md) tell you *what* to achieve. This page shows *where* each one applies in a modern
 application stack, layer by layer, using the Kubernetes **4C model**: **Cloud → Cluster → Container → Code.**
-Each layer can only be as secure as the one beneath it. A perfectly written app on a cluster with an open API server is not secure.
+Each layer can only be as secure as the one beneath it. For the **pipeline tools** (SAST, DAST, SCA, signing, reporting) and how they connect, see the [DevSecOps toolchain](devsecops-toolchain.md). A perfectly written app on a cluster with an open API server is not secure.
 
 ## Contents
 1. [How the lab runs today](#1-how-the-lab-runs-today)

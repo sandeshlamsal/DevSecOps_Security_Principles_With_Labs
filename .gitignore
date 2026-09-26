@@ -8,3 +8,12 @@ kubeconfig*
 tmp/
 # Scanner output is regenerated; commit curated findings in findings/, not raw reports
 reports/
+
+# Terraform: state and tfvars can hold secrets and personal IDs; the lock file IS committed
+infra/**/.terraform/
+infra/**/terraform.tfvars
+infra/**/*.tfstate*
+*.tfplan
+# SOPS/age private keys never leave your machine
+*.agekey
+keys.txt

@@ -1,5 +1,8 @@
 # DevSecOps & Security Engineering: Principles, Interviews & Labs
 
+[![security](https://github.com/sandeshlamsal/DevSecOps_Security_Principles_With_Labs/actions/workflows/security.yml/badge.svg)](https://github.com/sandeshlamsal/DevSecOps_Security_Principles_With_Labs/actions/workflows/security.yml)
+[![ci](https://github.com/sandeshlamsal/DevSecOps_Security_Principles_With_Labs/actions/workflows/ci.yml/badge.svg)](https://github.com/sandeshlamsal/DevSecOps_Security_Principles_With_Labs/actions/workflows/ci.yml)
+
 A hands-on lab that prepares you for **Security Engineer, DevSecOps Engineer and Application Security (AppSec) roles**.
 You run a real, intentionally insecure web app on your own laptop, then **find, fix, prevent and detect** its weaknesses
 the way a production security team would: threat models, secure code review, pipeline security gates, supply-chain
@@ -19,9 +22,20 @@ OWASP Top 10 and more, and is meant to be run locally for learning. The reasons 
 | **New to security** | 👶 [Baby steps](docs/basics/README.md): eight short, plain-English lessons, each with a small hands-on exercise |
 | **Targeting a job** | 🎯 [Career guide](docs/career/README.md): what each role does, the skills map, and how this lab proves each skill |
 | **Ready to build** | 🧪 [Labs](docs/labs/README.md): step-by-step guides with real commands, output and issues |
-| **Following a plan** | 🗺️ [Study guide](docs/career/README.md#12-week-study-plan): week by week, with links into every lesson and lab |
+| **Following a plan** | 🗺️ [Roadmap](docs/career/ROADMAP.md): 36 weeks, 5 phases (fundamentals → Azure cloud security → DevSecOps pipeline → Kubernetes security → portfolio), with certifications |
+| **Hiring / reviewing** | 🏗️ [Capstone](docs/capstone/README.md): a GitOps pipeline hardened end to end, with blocking security gates and expiring exceptions |
 | **Learning the principles** | 📐 [Principles](docs/principles/README.md): 13 principles, each with its own hands-on labs |
+| **Looking up a term or tool** | 📖 [Glossary](docs/GLOSSARY.md): SAST, DAST, SBOM, SOPS, Checkov and 150+ more, each with where it's used in this lab |
+| **Seeing how the tools connect** | 🔧 [DevSecOps toolchain](docs/architecture/devsecops-toolchain.md): pipeline diagram, SAST/DAST/SCA, vulnerability reporting flow |
 | **Working with cloud and Kubernetes** | ☁️ [Securing the stack](docs/architecture/README.md): cloud, cluster, containers, pods and microservices, layer by layer |
+
+## Security gates on this repo
+
+Every push and PR runs [six blocking security gates](scripts/security-scan.sh): secrets (gitleaks), CI supply chain (Semgrep),
+Kubernetes misconfiguration (Trivy), Terraform (Checkov), an **exceptions register where every accepted risk expires**
+([SECURITY-EXCEPTIONS.md](SECURITY-EXCEPTIONS.md)), and Kyverno admission policies. A second job uploads every scanner's results as
+SARIF to the repo's **Security → Code scanning** tab, and runs weekly so new CVEs surface without a push. Run the gates locally with `make security-scan`.
+How it all fits: [toolchain diagram](docs/architecture/devsecops-toolchain.md).
 
 ## Quick start
 
@@ -63,11 +77,17 @@ make open         # http://localhost:3000 (bound to 127.0.0.1 only)
 | [docs/career/](docs/career/README.md) | Roles, skills map, certifications, interview preparation |
 | [docs/principles/](docs/principles/README.md) | Security engineering principles mapped to this lab |
 | [docs/labs/](docs/labs/README.md) | **Lab status and step-by-step execution guides** |
-| [docs/architecture/](docs/architecture/README.md) | Securing cloud, Kubernetes, containers, pods and microservices |
+| [docs/career/ROADMAP.md](docs/career/ROADMAP.md) | 36-week roadmap to DevSecOps / Cloud Security roles |
+| [docs/capstone/](docs/capstone/README.md) | Portfolio project: hardened GitOps pipeline (design, decisions, milestones) |
+| [docs/cloud/](docs/cloud/README.md) · [infra/azure/](infra/azure/) | Azure cloud security labs + secure-by-default AKS Terraform |
+| [docs/architecture/](docs/architecture/README.md) | Securing cloud, Kubernetes, containers, pods and microservices · [toolchain](docs/architecture/devsecops-toolchain.md) |
+| [docs/GLOSSARY.md](docs/GLOSSARY.md) | Security terms and tools, A–Z |
 | [docs/security-way.md](docs/security-way.md) | Our operating rules (ethics, secrets, evidence) |
 | [docs/adr/](docs/adr/) | Architecture Decision Records |
 | [docs/templates/](docs/templates/) | Threat model, finding and security-incident templates |
 | [findings/](findings/README.md) | Finding register + [security audit & remediation plan](findings/REMEDIATION.md) |
 | [threat-models/](threat-models/README.md) | Threat models (Phase 1 onward) |
 | [apps/juice-shop/](apps/juice-shop/) | The app's Kubernetes manifest, hardened lab by lab |
-| [platform/](platform/) | Cluster config |
+| [platform/](platform/) | Cluster config, [Kyverno policies](platform/kyverno/) |
+| [gitops/](gitops/) | Argo CD applications |
+| [SECURITY-EXCEPTIONS.md](SECURITY-EXCEPTIONS.md) | Accepted risks, each with a reason, owner and expiry (enforced by CI) |

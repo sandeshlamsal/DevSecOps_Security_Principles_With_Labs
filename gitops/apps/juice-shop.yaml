@@ -1,0 +1,21 @@
+# Capstone: Argo CD deploys Juice Shop from Git. Git is the only way changes reach the cluster,
+# so every change passes the PR security gates first, and drift (a manual kubectl edit) is reverted.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: juice-shop
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/sandeshlamsal/DevSecOps_Security_Principles_With_Labs
+    targetRevision: main
+    path: apps/juice-shop
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: juice-shop
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true          # security control: manual changes in the cluster are reverted
+    syncOptions: [CreateNamespace=false]

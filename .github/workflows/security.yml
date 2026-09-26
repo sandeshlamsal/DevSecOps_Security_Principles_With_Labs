@@ -1,0 +1,59 @@
+# Security gates: the same checks as `make security-scan`, on every push and PR.
+# Hardening of the pipeline itself (Principle 11): read-only token, actions pinned by SHA,
+# tool versions pinned, and every downloaded binary verified against its published SHA-256 checksum.
+name: security
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "17 6 * * 1"   # weekly: new CVEs and expired exceptions surface even without code changes
+permissions:
+  contents: read
+env:
+  GITLEAKS_VERSION: 8.30.1
+  TRIVY_VERSION: 0.74.0
+  KYVERNO_VERSION: v1.19.1
+  SEMGREP_VERSION: 1.159.0
+  CHECKOV_VERSION: 3.3.19
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0          # gitleaks scans the full history
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+      - name: Install scanners (pinned, checksum-verified)
+        run: scripts/ci-install-scanners.sh
+      - name: Run security gates (scripts/security-scan.sh)
+        run: scripts/security-scan.sh
+
+  # Vulnerability reporting: SARIF from every scanner → GitHub code scanning (Security tab).
+  # Runs even when the gates fail, so the report always shows the current state.
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      security-events: write   # only this job may write code-scanning alerts
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+      - name: Install scanners (pinned, checksum-verified)
+        run: scripts/ci-install-scanners.sh
+      - name: Generate SARIF reports
+        run: scripts/security-report.sh
+      - name: Upload to GitHub code scanning
+        uses: github/codeql-action/upload-sarif@1190a975f95ce23525efb6a3fc21ea29567c1b52 # v3.38.2
+        with:
+          sarif_file: reports/sarif

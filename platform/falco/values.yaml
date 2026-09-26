@@ -1,0 +1,12 @@
+# Falco runtime detection (Principle 12, Lab 10). Modern eBPF probe (needs kernel BTF, present on the kind node).
+# Installed with: make falco-up   (chart pinned in the Makefile). Removed with: make falco-down.
+driver:
+  kind: modern_ebpf
+tty: true                      # line-buffered output, so alerts appear promptly in logs
+falcosidekick:
+  enabled: false               # no external routing in the lab (would send to Slack/SIEM in production)
+resources:
+  requests: {cpu: 100m, memory: 256Mi}
+  limits: {memory: 512Mi}
+# Default rules include: Terminal shell in container, Sensitive file read, Write below etc, etc.
+# Custom rules would go under `customRules:` and be tested by triggering them on purpose.

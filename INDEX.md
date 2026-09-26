@@ -79,6 +79,7 @@ CI checks that **every Markdown page is linked from this index**, so nothing get
 | 06 | [Secure defaults](docs/principles/06-secure-defaults.md) | 6.1 ✅, 6.2 ✅ |
 | 07 | [Never trust input](docs/principles/07-never-trust-input.md) | 7.1 ✅, 7.3 ✅ |
 | 11 | [Shift left](docs/principles/11-shift-left-automation.md) | 11.1 ✅, 11.2 ✅, 11.3 ✅ |
+| 12 | [Assume breach](docs/principles/12-assume-breach.md) | 12.1 ✅ |
 | 13 | [AI-era security](docs/principles/13-ai-era-security.md) | 13.1 ✅, 13.2 ✅ |
 | 02 | [Threat modelling](docs/principles/02-threat-modeling.md) | 2.1–2.3 |
 | 03 | [Least privilege](docs/principles/03-least-privilege.md) | 3.1–3.3 |
@@ -110,6 +111,7 @@ CI checks that **every Markdown page is linked from this index**, so nothing get
 | [lab-07-sast-supply-chain.md](docs/labs/lab-07-sast-supply-chain.md) | ✅ Custom SAST rule (F-016 regression gate) + build/scan/SBOM/sign pipeline (M2–M3) |
 | [lab-08-precommit-and-baselines.md](docs/labs/lab-08-precommit-and-baselines.md) | ✅ Pre-commit hooks (gitleaks + custom SAST) + baseline/exceptions model |
 | [lab-09-ai-security.md](docs/labs/lab-09-ai-security.md) | ✅ LLM chatbot review vs OWASP LLM Top 10 (F-032–F-035) |
+| [lab-10-runtime-detection.md](docs/labs/lab-10-runtime-detection.md) | ✅ Falco runtime detection: triggered + triaged a real alert (ATT&CK T1003.008) |
 | [threat-models/README.md](threat-models/README.md) | Index of threat models |
 | [threat-models/juice-shop-assets.md](threat-models/juice-shop-assets.md) | ✅ 17 assets classified and CIA-rated |
 | [threat-models/juice-shop.md](threat-models/juice-shop.md) | ✅ Full app threat model: DFD + STRIDE, 21 threats |
@@ -211,6 +213,7 @@ CI checks that **every Markdown page is linked from this index**, so nothing get
 | [platform/kind/cluster.yaml](platform/kind/cluster.yaml) | Local 3-node kind cluster |
 | [platform/network/juice-shop-netpol.yaml](platform/network/juice-shop-netpol.yaml) | Default-deny + narrow-allow NetworkPolicy (F-003) |
 | [platform/proxy/](platform/proxy/) | Hardened reverse proxy (virtual patch B1): [manifest](platform/proxy/juice-shop-proxy.yaml), [nginx.conf](platform/proxy/nginx.conf) |
+| [platform/falco/values.yaml](platform/falco/values.yaml) | Falco runtime-detection config (modern eBPF); `make falco-up` / `falco-down` |
 | [platform/kyverno/policies/](platform/kyverno/policies/) | Admission policies: [PSS restricted](platform/kyverno/policies/pod-security-restricted.yaml), [no SA token](platform/kyverno/policies/no-service-account-token.yaml), [trusted + pinned images](platform/kyverno/policies/images-trusted-and-pinned.yaml) |
 | [platform/kyverno/cluster-only/verify-image-signatures.yaml](platform/kyverno/cluster-only/verify-image-signatures.yaml) | Signature verification (needs a live cluster) |
 | [gitops/apps/juice-shop.yaml](gitops/apps/juice-shop.yaml) | Argo CD Application (selfHeal) |

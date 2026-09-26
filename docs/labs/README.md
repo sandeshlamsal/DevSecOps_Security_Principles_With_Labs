@@ -19,7 +19,7 @@ executed, its **execution guide** (the real commands, output and issues) is adde
 | [09 Data & secrets](../principles/09-protect-data-and-secrets.md) | 9.1 secret scan · 9.2 K8s Secrets · 9.3 leak response | — | ⏳ |
 | [10 Supply chain](../principles/10-supply-chain-integrity.md) | 10.1 SBOM · 10.2 CVE triage · 10.3 sign + verify | — | ⏳ |
 | [11 Shift left](../principles/11-shift-left-automation.md) | 11.1 CI gates · 11.2 pre-commit · 11.3 baselines | [lab-07](lab-07-sast-supply-chain.md), [lab-08](lab-08-precommit-and-baselines.md) | ✅ 2026-09-26 · 7 gates + hooks + exceptions |
-| [12 Assume breach](../principles/12-assume-breach.md) | 12.1 Falco · 12.2 audit logs · 12.3 game day | — | ⏳ |
+| [12 Assume breach](../principles/12-assume-breach.md) | 12.1 Falco · 12.2 audit logs · 12.3 game day | [lab-10-runtime-detection.md](lab-10-runtime-detection.md) | 🟡 12.1 ✅ · 12.2–12.3 ⏳ |
 | [13 AI-era security](../principles/13-ai-era-security.md) | 13.1–13.5 | [lab-09-ai-security.md](lab-09-ai-security.md) | 🟡 13.1 ✅ · 13.2 ✅ · 13.3–13.5 ⏳ |
 
 ## Conventions

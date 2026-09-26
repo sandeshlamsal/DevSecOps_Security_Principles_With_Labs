@@ -70,7 +70,7 @@ make open         # http://localhost:3000 (bound to 127.0.0.1 only)
 | 09 | [Protect data & secrets](docs/principles/09-protect-data-and-secrets.md) | Secret scanning, leak response | ⏳ |
 | 10 | [Supply-chain integrity](docs/principles/10-supply-chain-integrity.md) | SBOM, CVE triage, signing | ⏳ |
 | 11 | [Shift left](docs/principles/11-shift-left-automation.md) | DevSecOps pipeline gates | ✅ gates+hooks+exceptions |
-| 12 | [Assume breach](docs/principles/12-assume-breach.md) | Detection, incident response | ⏳ |
+| 12 | [Assume breach](docs/principles/12-assume-breach.md) | Detection, incident response | 🟡 Falco live |
 | 13 | [Security in the AI era](docs/principles/13-ai-era-security.md) | LLM app security, AI-driven threats | 🟡 chatbot reviewed |
 
 **Security audit:** 24 issues found so far (1 Critical, 8 High). See the [remediation plan](findings/REMEDIATION.md) for every issue, its fix, how to verify it, and the CI gate that keeps it fixed. Status per issue: [finding register](findings/README.md).

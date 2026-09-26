@@ -3,7 +3,7 @@ NAMESPACE := juice-shop
 # Pinned so the lab is reproducible. Bump deliberately and note it in docs/labs/.
 JUICE_SHOP_VERSION := v20.2.0
 
-.PHONY: help cluster-up cluster-down deploy undeploy status open ci security-scan az-plan az-up az-creds az-down
+.PHONY: help cluster-up cluster-down deploy undeploy status open ci security-scan az-plan az-up az-creds az-down falco-up falco-down
 
 help: ## Show targets
 	@grep -E '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) | awk -F':.*?## ' '{printf "  %-14s %s\n", $$1, $$2}'
@@ -37,6 +37,20 @@ ci: ## Run all CI checks locally (same script as GitHub Actions)
 
 security-scan: ## Run the security gates locally (same script as the security workflow)
 	scripts/security-scan.sh
+
+FALCO_VERSION := 9.2.0
+falco-up: ## Install Falco runtime detection (modern eBPF) into the falco namespace
+	helm repo add falcosecurity https://falcosecurity.github.io/charts >/dev/null 2>&1 || true
+	helm repo update falcosecurity >/dev/null
+	helm upgrade --install falco falcosecurity/falco --version $(FALCO_VERSION) \
+	  -n falco --create-namespace -f platform/falco/values.yaml --wait --timeout 5m
+
+falco-down: ## Remove Falco
+	helm uninstall falco -n falco || true
+	kubectl delete ns falco --ignore-not-found
+
+falco-alerts: ## Tail recent Falco alerts across all nodes
+	kubectl -n falco logs -l app.kubernetes.io/name=falco -c falco --since=5m | grep -iE 'Warning|Notice|Critical|Error' || echo 'no recent alerts'
 
 # ---- Phase 2: Azure (costs money while up: ~$0.30-0.50/hr; ALWAYS `make az-down` after a session) ----
 AZ_DIR := infra/azure

@@ -23,7 +23,7 @@ There is no runtime detection and no central security logging yet. Kubernetes au
 
 ## Hands-on labs
 
-### Lab 12.1: Runtime detection with Falco ⏳
+### Lab 12.1: Runtime detection with Falco ✅ ([execution guide](../labs/lab-10-runtime-detection.md))
 1. Install Falco with Helm into the lab cluster.
 2. Trigger a benign test event that its default rules detect. For example, start a debug container next to Juice Shop with
    `kubectl debug` and run a shell in it.

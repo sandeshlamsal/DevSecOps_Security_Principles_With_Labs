@@ -20,7 +20,7 @@ executed, its **execution guide** (the real commands, output and issues) is adde
 | [10 Supply chain](../principles/10-supply-chain-integrity.md) | 10.1 SBOM · 10.2 CVE triage · 10.3 sign + verify | — | ⏳ |
 | [11 Shift left](../principles/11-shift-left-automation.md) | 11.1 CI gates · 11.2 pre-commit · 11.3 baselines | [lab-07](lab-07-sast-supply-chain.md), [lab-08](lab-08-precommit-and-baselines.md) | ✅ 2026-09-26 · 7 gates + hooks + exceptions |
 | [12 Assume breach](../principles/12-assume-breach.md) | 12.1 Falco · 12.2 audit logs · 12.3 game day | [lab-10](lab-10-runtime-detection.md), [lab-11](lab-11-incident-game-day.md) | 🟡 12.1 ✅ · 12.3 ✅ · 12.2 ⏳ |
-| [13 AI-era security](../principles/13-ai-era-security.md) | 13.1–13.5 | [lab-09-ai-security.md](lab-09-ai-security.md) | 🟡 13.1 ✅ · 13.2 ✅ · 13.3–13.5 ⏳ |
+| [13 AI-era security](../principles/13-ai-era-security.md) | 13.1–13.5 | [lab-09](lab-09-ai-security.md), [lab-12](lab-12-ai-testing-and-process.md) | ✅ 2026-09-26 · all 5 |
 
 ## Conventions
 - **Issue IDs:** `ISSUE-n` in Lab 0, then `L3-ISSUE-n` for Principle 3's labs, and so on. Each has a symptom, root cause, fix and verification.

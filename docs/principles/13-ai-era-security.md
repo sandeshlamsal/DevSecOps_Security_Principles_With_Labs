@@ -101,17 +101,17 @@ Answer from the code, with file and line references:
 4. Are there rate or spend limits (LLM10)?
 Write a finding for each gap, with a fix that works **outside** the model.
 
-### Lab 13.3: Build an AI security test plan ⏳
+### Lab 13.3: Build an AI security test plan ✅ ([execution guide](../labs/lab-12-ai-testing-and-process.md))
 Write test cases (not a one-off hack) for your own app's AI feature: direct injection, indirect injection through content the
 bot reads, output-encoding checks, and a cost-limit check. Look at open-source evaluation tools such as
 [garak](https://github.com/NVIDIA/garak) or [promptfoo](https://www.promptfoo.dev/) for running them repeatably in CI, and
 explain which risks tests can and can't prove are fixed.
 
-### Lab 13.4: Anti-deepfake payment process ⏳
+### Lab 13.4: Anti-deepfake payment process ✅ ([execution guide](../labs/lab-12-ai-testing-and-process.md))
 Write a one-page process for a finance team: which requests need out-of-band verification, how to verify, and what to do when
 someone senior insists it's urgent. Then list which technical controls back it up.
 
-### Lab 13.5: AI-assisted triage, verified ⏳
+### Lab 13.5: AI-assisted triage, verified ✅ ([execution guide](../labs/lab-12-ai-testing-and-process.md))
 Give an AI assistant 20 Semgrep findings from Lab 7.1 and ask it to classify them as true or false positive. Compare with your own
 manual triage. Record its accuracy and where it was confidently wrong. That number is your evidence for how far to trust it.
 

@@ -112,6 +112,7 @@ CI checks that **every Markdown page is linked from this index**, so nothing get
 | [lab-08-precommit-and-baselines.md](docs/labs/lab-08-precommit-and-baselines.md) | ✅ Pre-commit hooks (gitleaks + custom SAST) + baseline/exceptions model |
 | [lab-09-ai-security.md](docs/labs/lab-09-ai-security.md) | ✅ LLM chatbot review vs OWASP LLM Top 10 (F-032–F-035) |
 | [lab-10-runtime-detection.md](docs/labs/lab-10-runtime-detection.md) | ✅ Falco runtime detection: triggered + triaged a real alert (ATT&CK T1003.008) |
+| [lab-11-incident-game-day.md](docs/labs/lab-11-incident-game-day.md) | ✅ Incident game day: detect→contain→eradicate→recover→postmortem |
 | [threat-models/README.md](threat-models/README.md) | Index of threat models |
 | [threat-models/juice-shop-assets.md](threat-models/juice-shop-assets.md) | ✅ 17 assets classified and CIA-rated |
 | [threat-models/juice-shop.md](threat-models/juice-shop.md) | ✅ Full app threat model: DFD + STRIDE, 21 threats |
@@ -126,6 +127,7 @@ CI checks that **every Markdown page is linked from this index**, so nothing get
 | [findings/README.md](findings/README.md) | **Finding register**: all 24 issues with risk, principle, status |
 | [findings/REMEDIATION.md](findings/REMEDIATION.md) | **Security audit + remediation plan**: triage of 179 scanner results, fixes, verification, gates |
 | [SECURITY-EXCEPTIONS.md](SECURITY-EXCEPTIONS.md) | Accepted risks, each with reason, owner and **expiry** (enforced by CI) |
+| [incidents/2026-09-26-gd1-intruder-credential-read.md](incidents/2026-09-26-gd1-intruder-credential-read.md) | Game-day incident report (detect→respond→postmortem) |
 | [.trivyignore](.trivyignore) | Trivy exceptions with `exp:` dates (EXC-005) |
 | [.gitleaksignore](.gitleaksignore) | Verified false positives only, with reasons |
 

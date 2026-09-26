@@ -33,7 +33,7 @@ There is no runtime detection and no central security logging yet. Kubernetes au
 1. Recreate the kind cluster with an API-server audit policy (a kind config patch) that logs Secret access and `exec` requests.
 2. Read a Secret and run `kubectl exec`, then find both events in the audit log and identify who did what, and when.
 
-### Lab 12.3: Security incident game day ⏳
+### Lab 12.3: Security incident game day ✅ ([execution guide](../labs/lab-11-incident-game-day.md))
 A partner writes a scenario (for example: "a leaked token is used to read Secrets"). You respond using the
 [security-incident template](../templates/security-incident.md): detect, scope, contain, eradicate, recover, and hold a blameless
 postmortem with action items that become new controls in principles 03–11.

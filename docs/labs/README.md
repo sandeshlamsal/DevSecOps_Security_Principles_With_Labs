@@ -14,11 +14,11 @@ executed, its **execution guide** (the real commands, output and issues) is adde
 | [04 Defence in depth](../principles/04-defense-in-depth.md) | 4.1 NetworkPolicy · 4.2 Pod Security · 4.3 layer map | [lab-05-defense-in-depth.md](lab-05-defense-in-depth.md) | 🟡 4.1 ✅ · 4.2 ✅ · 4.3 ⏳ |
 | [05 Attack surface](../principles/05-attack-surface-reduction.md) | 5.1 enumerate · 5.2 image surface · 5.3 close doors | [lab-03](lab-03-attack-surface-and-defaults.md), [lab-06](lab-06-virtual-patch-proxy.md) | 🟡 5.1 ✅ · 5.3 ✅ · 5.2 ⏳ |
 | [06 Secure defaults](../principles/06-secure-defaults.md) | 6.1 headers/CSP · 6.2 error handling | [lab-03-attack-surface-and-defaults.md](lab-03-attack-surface-and-defaults.md) | ✅ 2026-09-26 · 2 new findings |
-| [07 Never trust input](../principles/07-never-trust-input.md) | 7.1 SAST · 7.2 fix · 7.3 custom rule | — | ⏳ |
+| [07 Never trust input](../principles/07-never-trust-input.md) | 7.1 SAST · 7.2 fix · 7.3 custom rule | [lab-07-sast-supply-chain.md](lab-07-sast-supply-chain.md) | 🟡 7.1 ✅ · 7.3 ✅ · 7.2 pending fork |
 | [08 Identity & access](../principles/08-identity-and-access.md) | 8.1 session · 8.2 authz review · 8.3 password storage | — | ⏳ |
 | [09 Data & secrets](../principles/09-protect-data-and-secrets.md) | 9.1 secret scan · 9.2 K8s Secrets · 9.3 leak response | — | ⏳ |
 | [10 Supply chain](../principles/10-supply-chain-integrity.md) | 10.1 SBOM · 10.2 CVE triage · 10.3 sign + verify | — | ⏳ |
-| [11 Shift left](../principles/11-shift-left-automation.md) | 11.1 CI gates · 11.2 pre-commit · 11.3 baselines | — | ⏳ |
+| [11 Shift left](../principles/11-shift-left-automation.md) | 11.1 CI gates · 11.2 pre-commit · 11.3 baselines | [lab-07](lab-07-sast-supply-chain.md) + [security.yml](../../.github/workflows/security.yml) | 🟡 gates live; 11.2/11.3 ⏳ |
 | [12 Assume breach](../principles/12-assume-breach.md) | 12.1 Falco · 12.2 audit logs · 12.3 game day | — | ⏳ |
 | [13 AI-era security](../principles/13-ai-era-security.md) | 13.1–13.5 | — | ⏳ |
 

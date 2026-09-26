@@ -1,0 +1,17 @@
+rules:
+  - id: sequelize-raw-query-string-concat
+    languages: [typescript, javascript]
+    severity: ERROR
+    message: >
+      SQL built by string interpolation/concatenation into sequelize.query() is SQL injection (CWE-89).
+      Use parameterised queries: sequelize.query(sql, { replacements: {...} }) with :named binds.
+    metadata:
+      cwe: "CWE-89: Improper Neutralization of Special Elements used in an SQL Command"
+      owasp: "A03:2021 - Injection"
+      references: ["https://owasp.org/www-community/attacks/SQL_Injection"]
+    patterns:
+      - pattern-either:
+          - pattern: $X.sequelize.query(`...${...}...`, ...)
+          - pattern: $X.sequelize.query(`...${...}...`)
+          - pattern: $X.sequelize.query($A + ..., ...)
+          - pattern: $X.sequelize.query($A + ...)

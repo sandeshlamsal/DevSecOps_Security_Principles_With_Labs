@@ -1,0 +1,53 @@
+# Capstone M2-M3: build our own image, scan it, produce an SBOM, and sign it keylessly.
+# STATUS: mechanism ready. It activates when an app fork with a Dockerfile lands at build/ and
+# the repo has packages:write enabled. Until then it is skipped (the paths filter + guard below).
+name: build-sign
+on:
+  push:
+    branches: [main]
+    paths: ["build/**"]              # only runs once a buildable app exists at build/
+  workflow_dispatch:
+permissions:
+  contents: read
+  packages: write                    # push to GHCR
+  id-token: write                    # cosign keyless (OIDC)
+env:
+  IMAGE: ghcr.io/${{ github.repository }}/juice-shop
+  TRIVY_VERSION: 0.74.0
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with: {persist-credentials: false}
+      - name: Guard - only build when a Dockerfile exists
+        run: test -f build/Dockerfile || { echo "no build/Dockerfile yet (fork not added); skipping"; exit 0; }
+      - uses: docker/login-action@5e57cd118135c172c3672efd75eb46360885c0ef # v3.6.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push by digest
+        id: build
+        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6.18.0
+        with:
+          context: build
+          push: true
+          tags: ${{ env.IMAGE }}:${{ github.sha }}
+      - name: Scan the image (fail on fixable HIGH/CRITICAL)
+        run: |
+          curl -sSLf "https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz" | tar -xz -C /usr/local/bin trivy
+          trivy image --exit-code 1 --severity HIGH,CRITICAL --ignore-unfixed \
+            "${IMAGE}@${{ steps.build.outputs.digest }}"
+      - name: Generate SBOM (CycloneDX)
+        uses: anchore/sbom-action@8e94d75ddd33f69f691467e42275782e4bfefe84 # v0.20.9
+        with:
+          image: ${{ env.IMAGE }}@${{ steps.build.outputs.digest }}
+          format: cyclonedx-json
+          output-file: sbom.cdx.json
+      - uses: sigstore/cosign-installer@d7543c93d881b35a8faa02e8e3605f69b7a1ce62 # v3.10.0
+      - name: Sign the image and attest the SBOM (keyless)
+        run: |
+          cosign sign --yes "${IMAGE}@${{ steps.build.outputs.digest }}"
+          cosign attest --yes --predicate sbom.cdx.json --type cyclonedx "${IMAGE}@${{ steps.build.outputs.digest }}"

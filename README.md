@@ -65,11 +65,11 @@ make open         # http://localhost:3000 (bound to 127.0.0.1 only)
 | 04 | [Defence in depth](docs/principles/04-defense-in-depth.md) | NetworkPolicy, Pod Security | 🟡 netpol + PSS |
 | 05 | [Minimise attack surface](docs/principles/05-attack-surface-reduction.md) | Exposure management | 🟡 5.1, 5.3 done |
 | 06 | [Secure defaults](docs/principles/06-secure-defaults.md) | Headers, CSP, error handling | ✅ headers, errors |
-| 07 | [Never trust input](docs/principles/07-never-trust-input.md) | SAST triage, secure code fixes | ⏳ |
+| 07 | [Never trust input](docs/principles/07-never-trust-input.md) | SAST triage, secure code fixes | 🟡 SAST + custom rule |
 | 08 | [Identity & access](docs/principles/08-identity-and-access.md) | AuthN/AuthZ review | ⏳ |
 | 09 | [Protect data & secrets](docs/principles/09-protect-data-and-secrets.md) | Secret scanning, leak response | ⏳ |
 | 10 | [Supply-chain integrity](docs/principles/10-supply-chain-integrity.md) | SBOM, CVE triage, signing | ⏳ |
-| 11 | [Shift left](docs/principles/11-shift-left-automation.md) | DevSecOps pipeline gates | ⏳ |
+| 11 | [Shift left](docs/principles/11-shift-left-automation.md) | DevSecOps pipeline gates | 🟡 7 gates live |
 | 12 | [Assume breach](docs/principles/12-assume-breach.md) | Detection, incident response | ⏳ |
 | 13 | [Security in the AI era](docs/principles/13-ai-era-security.md) | LLM app security, AI-driven threats | ⏳ |
 

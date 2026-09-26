@@ -32,7 +32,7 @@ Juice Shop is deliberately full of injection weaknesses. In this principle you f
 
 ## Hands-on labs
 
-### Lab 7.1: Find injection sinks with SAST ⏳
+### Lab 7.1: Find injection sinks with SAST ✅ ([execution guide](../labs/lab-07-sast-supply-chain.md))
 1. Get the source for the pinned version: `git clone --depth 1 --branch v20.2.0 https://github.com/juice-shop/juice-shop.git tmp/juice-shop`
 2. Scan it: `semgrep scan --config p/owasp-top-ten --config p/nodejs tmp/juice-shop --json -o reports/semgrep.json`
 3. Pick the top 5 SQL-injection and XSS results. For each one, open the code and decide: **true positive** or **false positive**,
@@ -43,7 +43,7 @@ Juice Shop is deliberately full of injection weaknesses. In this principle you f
 2. Build your own image from the fixed source, deploy it to the lab and confirm the feature still works.
 3. Re-run Semgrep and confirm the finding is gone. Record before/after in the finding.
 
-### Lab 7.3: Write a custom rule ⏳
+### Lab 7.3: Write a custom rule ✅ ([execution guide](../labs/lab-07-sast-supply-chain.md))
 Write a small Semgrep rule that flags string concatenation into `sequelize.query(...)`, and add it to CI in Principle 11 so this
 class of bug can't come back. **Turning one fix into a guardrail** is the core DevSecOps move.
 

@@ -104,6 +104,7 @@ CI checks that **every Markdown page is linked from this index**, so nothing get
 | [lab-04-least-privilege.md](docs/labs/lab-04-least-privilege.md) | ✅ Pod hardening: SA token, securityContext, RBAC (F-001/002/009/021 fixed) |
 | [lab-05-defense-in-depth.md](docs/labs/lab-05-defense-in-depth.md) | ✅ Default-deny NetworkPolicy + Pod Security enforce (F-003/004 fixed) |
 | [lab-06-virtual-patch-proxy.md](docs/labs/lab-06-virtual-patch-proxy.md) | ✅ Hardened reverse proxy blocks exposed paths (B1; F-005/006/013/014/015) |
+| [lab-07-sast-supply-chain.md](docs/labs/lab-07-sast-supply-chain.md) | ✅ Custom SAST rule (F-016 regression gate) + build/scan/SBOM/sign pipeline (M2–M3) |
 | [threat-models/README.md](threat-models/README.md) | Index of threat models |
 | [threat-models/juice-shop-assets.md](threat-models/juice-shop-assets.md) | ✅ 17 assets classified and CIA-rated |
 | [threat-models/juice-shop.md](threat-models/juice-shop.md) | ✅ Full app threat model: DFD + STRIDE, 21 threats |
@@ -191,7 +192,9 @@ CI checks that **every Markdown page is linked from this index**, so nothing get
 |---|---|
 | [Makefile](Makefile) | All commands (`make help`) |
 | [.github/workflows/ci.yml](.github/workflows/ci.yml) | CI: manifests, custom resources, links, index completeness |
-| [.github/workflows/security.yml](.github/workflows/security.yml) | Security gates (blocking) + SARIF reporting to GitHub code scanning; weekly schedule |
+| [.github/workflows/security.yml](.github/workflows/security.yml) | Security gates (7, blocking) + SARIF reporting; weekly schedule |
+| [.github/workflows/build-sign.yml](.github/workflows/build-sign.yml) | Build → Trivy scan → Syft SBOM → Cosign sign (M2–M3; activates with the app fork) |
+| [.semgrep/sequelize-sqli.yaml](.semgrep/sequelize-sqli.yaml) | Custom SAST rule: SQLi regression gate for F-016 (+ self-test) |
 | [scripts/ci.sh](scripts/ci.sh) | CI checks (same locally and in Actions) |
 | [scripts/security-scan.sh](scripts/security-scan.sh) | The 6 security gates |
 | [scripts/security-report.sh](scripts/security-report.sh) | SARIF generation for vulnerability reporting |

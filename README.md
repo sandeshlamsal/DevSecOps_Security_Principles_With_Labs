@@ -17,6 +17,8 @@ OWASP Top 10 and more, and is meant to be run locally for learning. The reasons 
 
 ## Where to start
 
+⭐ **[What this lab proves](docs/security-in-practice.md)**: principle → build → evidence → lesson (start here if you're hiring or interviewing).
+
 🗺️ **[INDEX.md](INDEX.md)**: the map of every page and file in the project.
 
 
@@ -83,6 +85,7 @@ make open         # http://localhost:3000 (bound to 127.0.0.1 only)
 | [docs/career/](docs/career/README.md) | Roles, skills map, certifications, interview preparation |
 | [docs/principles/](docs/principles/README.md) | Security engineering principles mapped to this lab |
 | [docs/labs/](docs/labs/README.md) | **Lab status and step-by-step execution guides** |
+| [docs/security-in-practice.md](docs/security-in-practice.md) | **What this lab proves**: principle → build → evidence → lesson |
 | [docs/career/ROADMAP.md](docs/career/ROADMAP.md) | 36-week roadmap to DevSecOps / Cloud Security roles |
 | [docs/capstone/](docs/capstone/README.md) | Portfolio project: hardened GitOps pipeline (design, decisions, milestones) |
 | [docs/cloud/](docs/cloud/README.md) · [infra/azure/](infra/azure/) | Azure cloud security labs + secure-by-default AKS Terraform |

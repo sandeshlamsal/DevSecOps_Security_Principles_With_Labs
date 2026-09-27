@@ -29,6 +29,7 @@ CI checks that **every Markdown page is linked from this index**, so nothing get
 |---|---|
 | [README.md](README.md) | Overview, progress table, quick start, security gates on this repo |
 | [docs/security-in-practice.md](docs/security-in-practice.md) | **What this lab proves** — principle → build → evidence → lesson (for hiring/interviews) |
+| [docs/PROJECT-FLOW.md](docs/PROJECT-FLOW.md) | **End-to-end flow**: lifecycle diagram, build/rebuild, teardown, cost, next steps |
 | [docs/career/PATHWAYS.md](docs/career/PATHWAYS.md) | Which security role to aim for from DevOps, and the plan for each |
 | [docs/career/ROADMAP.md](docs/career/ROADMAP.md) | **The week-by-week plan**: 36 weeks, 5 phases, certifications |
 | [docs/principles/README.md](docs/principles/README.md) | The 13 principles in learning order, each with hands-on labs |

@@ -19,6 +19,8 @@ OWASP Top 10 and more, and is meant to be run locally for learning. The reasons 
 
 ⭐ **[What this lab proves](docs/security-in-practice.md)**: principle → build → evidence → lesson (start here if you're hiring or interviewing).
 
+🔄 **[Project flow](docs/PROJECT-FLOW.md)**: the end-to-end lifecycle, build/rebuild and teardown, and cost.
+
 🗺️ **[INDEX.md](INDEX.md)**: the map of every page and file in the project.
 
 

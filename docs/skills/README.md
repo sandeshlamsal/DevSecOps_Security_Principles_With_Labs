@@ -17,6 +17,7 @@ Template: [skill-template.md](skill-template.md)
 8. [Process for your next skill](#8-process-for-your-next-skill)
 9. [Pitfalls](#9-pitfalls)
 10. [Skill backlog for this repo](#10-skill-backlog-for-this-repo)
+11. [Packaging as a plugin (reuse in every repo)](#11-packaging-as-a-plugin-reuse-in-every-repo)
 
 ---
 
@@ -237,3 +238,49 @@ Required tools: semgrep, gitleaks, trivy, checkov. Missing tools are reported, a
 | secret-leak-response | Rotate first → scope → clean history → add hooks | Principle 9, Lab 8 | ⏳ |
 | incident-response | NIST lifecycle, evidence first, quarantine pattern, postmortem | Labs 10–11 | ⏳ |
 | ai-feature-review | OWASP LLM Top 10 review; flag policy in the prompt | Labs 9, 12 | ⏳ |
+
+---
+
+## 11. Packaging as a plugin (reuse in every repo)
+
+A skill in `<repo>/.claude/skills/` only works in that repo. To reuse skills **and subagents** everywhere, they're packaged as a plugin in
+a **private marketplace repo**: `sandeshlamsal/claude-plugins`. The canonical, maintained version of security-triage now lives there as
+`security:triage`; the copy in this repo stays as the documented v1 case study.
+
+### Layout
+```
+claude-plugins/                          (private GitHub repo = marketplace "sandesh")
+├── .claude-plugin/marketplace.json      lists the plugins
+├── plugins/security/
+│   ├── .claude-plugin/plugin.json       name, version
+│   ├── agents/   check-pipeline.md · vulnerability.md · trends.md   → security:check-pipeline, …
+│   └── skills/   triage/ · review/                                  → security:triage, security:review
+├── scripts/ci.sh                        same checks locally and in CI
+└── .github/workflows/ci.yml
+```
+Names are namespaced by the plugin, which gives the `security → check-pipeline` hierarchy. Later: `sre:…`, `devops:…`.
+
+### Skill vs subagent
+| | Skill | Subagent (`agents/*.md`) |
+|---|---|---|
+| Runs | Inside your conversation | In its own context; returns a summary |
+| Use for | Step-by-step work you want to watch | Big/noisy or parallel jobs |
+| Tools | The session's | Restricted per agent with `tools:` (e.g. `trends` = web only, no commands, no writes) |
+
+### Install and use
+```bash
+claude plugin marketplace add sandeshlamsal/claude-plugins       # once per machine (private: uses your GitHub credentials)
+claude plugin install security@sandesh --scope local             # per repo; or --scope project / user
+```
+Then `/security:review`, or "use security:check-pipeline on this repo". `--scope local` writes `.claude/settings.local.json`, which is
+git-ignored.
+
+### Lessons from building it (2026-10-02)
+| Lesson | Detail |
+|---|---|
+| **Run the validator** | `claude plugin validate <path>` caught a description containing `Read-only: …`: an unquoted `: ` breaks YAML, and the agent would have **loaded with every field dropped, including its tool restrictions**. All descriptions are now quoted, and CI enforces it |
+| **Portable paths** | Inside a plugin, reference bundled files as `${CLAUDE_PLUGIN_ROOT}/...`, never repo-relative paths |
+| **Raw output outside the repo** | The triage scripts now default to `$TMPDIR/security-triage/…`, so raw reports never land in a target repo |
+| **Test headless before publishing** | `echo "<task>" \| claude -p --plugin-dir <plugin> --agent security:check-pipeline --allowedTools "Read Grep Glob Bash(semgrep *) …"`. Put the prompt on **stdin**: `--allowedTools` takes a variable-length list and swallows a trailing prompt |
+| **Check the repo's visibility** | The repo was created public; it was switched to private before the first push |
+| **The first test found real issues** | `check-pipeline` on this repo found no branch protection on `main` and two unverified downloads in workflows that were meant to be hardened (F-039–F-041) |

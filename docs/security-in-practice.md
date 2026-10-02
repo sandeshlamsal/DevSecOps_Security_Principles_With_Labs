@@ -24,7 +24,7 @@ commit on [both CI pipelines](../.github/workflows/). Start at the [INDEX](../IN
 | 02 | [Threat modelling](principles/02-threat-modeling.md) | STRIDE model from source review | [21 threats](../threat-models/juice-shop.md); found SSRF, B2B `eval`, XXE (F-027/028/029) before any exploit | Model the design, not just the endpoints; combinations (query-string secret + public logs) raise the risk |
 | 03 | [Least privilege](principles/03-least-privilege.md) | Hardened pod: dedicated SA, no token, non-root, dropped caps, seccomp, digest pin | [Lab 4](labs/lab-04-least-privilege.md); F-001/002/009 Fixed; `kubectl auth can-i` → no secrets/pods | Verify with `trivy config` + `can-i`, don't assume; a writable-FS app is a real "control vs app" trade-off |
 | 04 | [Defence in depth](principles/04-defense-in-depth.md) | Default-deny NetworkPolicy + enforced Pod Security `restricted` | [Lab 5](labs/lab-05-defense-in-depth.md); cross-ns probe **timed out**, privileged pod **rejected** | An ingress rule with only `ports:` allows all sources — the `from:` selector is what segments |
-| 05 | [Attack surface](principles/05-attack-surface-reduction.md) | Endpoint inventory + hardened reverse-proxy virtual patch | [Lab 3](labs/lab-03-attack-surface-and-defaults.md), [Lab 6](labs/lab-06-virtual-patch-proxy.md); the exposed **private key** now 404s | Triage before reporting (the open-redirect was already mitigated); virtual-patch fast, then fix durably |
+| 05 | [Attack surface](principles/05-attack-surface-reduction.md) | Endpoint inventory + hardened reverse-proxy virtual patch | [Lab 3](labs/lab-03-attack-surface-and-defaults.md), [Lab 6](labs/lab-06-virtual-patch-proxy.md); the exposed **private key** now 404s | Read the code that actually decides before dismissing a finding (Lab 3's open-redirect call was wrong and later corrected); virtual-patch fast, then fix durably |
 | 06 | [Secure defaults](principles/06-secure-defaults.md) | Header review + report-only CSP; error-verbosity finding | [Lab 3](labs/lab-03-attack-surface-and-defaults.md); F-007/008/031 | The safe state must be the default; errors leak framework/version/paths |
 | 07 | [Never trust input](principles/07-never-trust-input.md) | Custom Semgrep rule = SQLi regression gate | [Lab 7](labs/lab-07-sast-supply-chain.md); fires on the 2 real files, passes the fix, self-tested | Turn one fix into a guardrail; reward the correct fix, don't ban the API |
 | 09 | [Data & secrets](principles/09-protect-data-and-secrets.md) | gitleaks in CI + pre-commit; found a real self-inflicted FP and fixed the scan gap | [Lab 8](labs/lab-08-precommit-and-baselines.md); `--staged` vs `--pre-commit` gotcha documented | A blocked exposure ≠ a rotated secret — F-013/015 stay open until keys are rotated |
@@ -37,9 +37,10 @@ commit on [both CI pipelines](../.github/workflows/). Start at the [INDEX](../IN
 1. **A private key, downloadable by anyone.** The audit's Critical (F-013): a Terraform file with a private key served at
    `/infrastructure`. I virtual-patched the exposure at a reverse proxy the same day (404), and kept the finding **open** because the
    real fix is key **rotation** — a blocked door doesn't un-leak what already left. ([Lab 6](labs/lab-06-virtual-patch-proxy.md))
-2. **The scanner was wrong, twice, in opposite directions.** Semgrep flagged an open redirect that was already mitigated (downgraded to a
-   false positive), while Trivy "runs as root" on a non-root image was worth keeping (the manifest didn't *assert* non-root). Triage is the
-   job. ([Lab 3](labs/lab-03-attack-surface-and-defaults.md), [REMEDIATION §3](../findings/REMEDIATION.md#3-scanner-results-and-triage))
+2. **I was wrong, and the process caught it.** In Lab 3 I dismissed Semgrep's open-redirect hit as mitigated. When I re-ran triage with
+   the security-triage skill, its rule R2 ("read the code that actually decides") showed the gate uses `url.includes()`: a real open
+   redirect. I'd read a challenge-detection helper, and my bypass test used a URL that wasn't on the allow-list. Corrected in the open,
+   in every doc that repeated it. ([run](labs/lab-13-security-triage-skill-run.md), [Lab 3 note](labs/lab-03-attack-surface-and-defaults.md))
 3. **An AI agent that authorises in the prompt.** The chatbot's coupon tool trusts a discount the model chooses, capped only by prompt
    text — so injection mints a 50%-off coupon. The same app gets it *right* elsewhere (`getOrderById` checks ownership in code). Fix: cap
    and authorise in code. ([Lab 9](labs/lab-09-ai-security.md))

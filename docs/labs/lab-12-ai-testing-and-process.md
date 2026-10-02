@@ -58,7 +58,7 @@ AI can speed up triage, but only if you **measure** it against ground truth. Thi
 | Item | Correct verdict | Why an AI (or a junior) might get it wrong |
 |---|---|---|
 | gitleaks: 62 hits in `*.spec.ts` | False positive (test fixtures) | Might over-report all 62 as real secrets |
-| Semgrep open-redirect (F-020) | False positive — allow-list + `startsWith` mitigates | Might trust the scanner and report it |
+| Semgrep open-redirect (F-020) | **Real (Medium)** — the gate uses `url.includes()` | Might read the wrong helper and dismiss it (a human made exactly this mistake in Lab 3) |
 | `getProductReviews` `$where` (F-035) | Low — `Number()` coercion neutralises it | Might rate it Critical NoSQLi without reading the coercion |
 | Trivy "runs as root" on a non-root image | Flag anyway (manifest doesn't *assert* non-root) | Might dismiss it as a false positive |
 

@@ -11,7 +11,7 @@ A security engineer's value is in the triage, not the raw count.
 ## Guardrails (apply throughout)
 - Only scan code and images the user owns or is authorised to assess. Live checks go only to the user's own or localhost targets.
 - Prove a finding exists (a status code, a file name, a code line) and **stop there**. No exploitation beyond proof.
-- **Never print secret values.** Report the file, line and rule; redact the value.
+- **Never print secret values.** Report the file, line and rule; redact the value. To judge a value (dummy vs real), test its *shape* in a script (length, prefix, entropy) rather than printing the line.
 - Never invent results. If a scanner is missing, say so and report coverage as partial.
 
 ## Step 1: Establish scope
@@ -19,6 +19,7 @@ Before scanning, find out (ask if it isn't clear from the repo):
 1. **Target**: a source directory, and optionally a container image.
 2. **What is deployed or served?** This is the question triage depends on. Look at Dockerfiles, manifests, static-file routes.
 3. **Whose CI is this?** `.github/` in a third-party project is their pipeline, not the user's.
+4. **Can you check exposure live?** If the app isn't running, say so now, confirm exposure from source instead, and list the live re-tests under Coverage gaps.
 
 ## Step 2: Run the scanners
 ```bash

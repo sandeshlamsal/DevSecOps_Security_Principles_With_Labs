@@ -26,7 +26,7 @@ ground truth from the OWASP Juice Shop v20.2.0 audit (`findings/REMEDIATION.md`)
 | gitleaks `private-key` in `lib/insecurity.ts:21` | none | **High, real**: JWT signing key in public source, anyone can forge sessions | — |
 | gitleaks ×62 in `*.spec.ts` | test-fixture | Set aside: dummy tokens in unit tests (sampled) | Reporting all 62 as leaks |
 | gitleaks ×2 in `data/static/users.yml` | none | Low: demo seed users for the training app | Rating seed data as a breach |
-| Semgrep `express-open-redirect` `routes/redirect.ts` | none | **False positive**: allow-list + `startsWith`; a bypass attempt returns 406 | Trusting the scanner. R2 |
+| Semgrep `express-open-redirect` `routes/redirect.ts` | none | **Medium, real**: the gate `isRedirectAllowed()` uses `url.includes()`, so any URL containing an allowed one passes | Reading the wrong helper (`startsWith` in challenge detection) and testing with a non-allow-listed URL — this repo's own Lab 3 mistake. R2 |
 | Semgrep `express-sequelize-injection` `routes/login.ts:34`, `search.ts:23` | none | **High, real**: request body interpolated into SQL | — |
 | `$where: 'this.product == ' + productId` | none | **Low**: `productId = Number(id)` neutralises injection; fragile pattern | Over-rating without reading the coercion. R2 |
 | Semgrep ×13 in `.github/workflows/` (upstream) | ci-config | Set aside: upstream project's pipeline, not deployed | Rating someone else's CI. R5 |

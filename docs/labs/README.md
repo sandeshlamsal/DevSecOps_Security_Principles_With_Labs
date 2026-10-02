@@ -22,6 +22,12 @@ executed, its **execution guide** (the real commands, output and issues) is adde
 | [12 Assume breach](../principles/12-assume-breach.md) | 12.1 Falco · 12.2 audit logs · 12.3 game day | [lab-10](lab-10-runtime-detection.md), [lab-11](lab-11-incident-game-day.md) | 🟡 12.1 ✅ · 12.3 ✅ · 12.2 ⏳ |
 | [13 AI-era security](../principles/13-ai-era-security.md) | 13.1–13.5 | [lab-09](lab-09-ai-security.md), [lab-12](lab-12-ai-testing-and-process.md) | ✅ 2026-09-26 · all 5 |
 
+## Skill runs
+
+| Run | What | Result |
+|---|---|---|
+| [lab-13-security-triage-skill-run.md](lab-13-security-triage-skill-run.md) | First real run of the security-triage skill on Juice Shop source + image | 407 raw → 6 new/changed findings; corrected F-020; F-019 confirmed Critical |
+
 ## Conventions
 - **Issue IDs:** `ISSUE-n` in Lab 0, then `L3-ISSUE-n` for Principle 3's labs, and so on. Each has a symptom, root cause, fix and verification.
 - **Finding IDs:** `F-n`, recorded in the [finding register](../../findings/README.md).

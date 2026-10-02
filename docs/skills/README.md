@@ -114,7 +114,7 @@ each came from a real decision:
 | Rule | From |
 |---|---|
 | In scope = deployed/served + reachable + no neutralising control | The audit's core triage rule |
-| Read the code before deciding | The open redirect that was already mitigated (Lab 3) |
+| Read the code before deciding | The open redirect: Lab 3 read the wrong helper and wrongly dismissed it; the skill's re-run caught it |
 | Keep alarms that point at a missing assertion | Trivy "runs as root" on a non-root image (Lab 4) |
 | Rate chains | Password in a URL + public logs (Lab 2) |
 | `trivy config` is one directory; gitleaks `--staged` vs `--pre-commit` | Labs 6 and 8 issues logs |
@@ -191,7 +191,7 @@ Required tools: semgrep, gitleaks, trivy, checkov. Missing tools are reported, a
 | Prompt | Expected |
 |---|---|
 | "Triage scanner results for tmp/juice-shop" | Triggers; finds SQLi in login/search, the JWT key, the served Terraform key; sets aside the 62 fixtures with a reason |
-| "Is the open redirect in redirect.ts real?" | Reads the code; verdict: false positive (allow-list + `startsWith`) |
+| "Is the open redirect in redirect.ts real?" | Reads the gate `isRedirectAllowed()`; verdict: real, Medium (`url.includes()`) |
 | "Any leaked secrets in this repo?" | Runs gitleaks; reports the verified false positives already in `.gitleaksignore` and no new leaks |
 | "Review this function for injection" (no scanners) | Should pick `security-audit`, not this skill |
 

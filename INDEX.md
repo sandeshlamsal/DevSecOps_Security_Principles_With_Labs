@@ -119,6 +119,7 @@ CI checks that **every Markdown page is linked from this index**, so nothing get
 | [lab-10-runtime-detection.md](docs/labs/lab-10-runtime-detection.md) | ✅ Falco runtime detection: triggered + triaged a real alert (ATT&CK T1003.008) |
 | [lab-11-incident-game-day.md](docs/labs/lab-11-incident-game-day.md) | ✅ Incident game day: detect→contain→eradicate→recover→postmortem |
 | [lab-12-ai-testing-and-process.md](docs/labs/lab-12-ai-testing-and-process.md) | ✅ AI security test plan + anti-deepfake process + verified AI triage (13.3–13.5) |
+| [lab-13-security-triage-skill-run.md](docs/labs/lab-13-security-triage-skill-run.md) | ✅ First security-triage skill run: 407 raw → 6 new/changed findings; F-020 verdict corrected |
 | [threat-models/README.md](threat-models/README.md) | Index of threat models |
 | [threat-models/juice-shop-assets.md](threat-models/juice-shop-assets.md) | ✅ 17 assets classified and CIA-rated |
 | [threat-models/juice-shop.md](threat-models/juice-shop.md) | ✅ Full app threat model: DFD + STRIDE, 21 threats |

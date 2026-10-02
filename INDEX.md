@@ -30,6 +30,9 @@ CI checks that **every Markdown page is linked from this index**, so nothing get
 | [README.md](README.md) | Overview, progress table, quick start, security gates on this repo |
 | [docs/security-in-practice.md](docs/security-in-practice.md) | **What this lab proves** — principle → build → evidence → lesson (for hiring/interviews) |
 | [docs/PROJECT-FLOW.md](docs/PROJECT-FLOW.md) | **End-to-end flow**: lifecycle diagram, build/rebuild, teardown, cost, next steps |
+| [docs/skills/README.md](docs/skills/README.md) | **Building Claude skills**: how skills work, how security-triage was built and tested, process + backlog |
+| [docs/skills/skill-template.md](docs/skills/skill-template.md) | Copyable `SKILL.md` template for new skills |
+| [.claude/skills/security-triage/SKILL.md](.claude/skills/security-triage/SKILL.md) | **Skill:** scanner output → risk-rated findings ([rules](.claude/skills/security-triage/references/triage-rules.md), [formats](.claude/skills/security-triage/references/finding-format.md), [run-scanners.sh](.claude/skills/security-triage/scripts/run-scanners.sh), [summarize.py](.claude/skills/security-triage/scripts/summarize.py)) |
 | [docs/career/PATHWAYS.md](docs/career/PATHWAYS.md) | Which security role to aim for from DevOps, and the plan for each |
 | [docs/career/ROADMAP.md](docs/career/ROADMAP.md) | **The week-by-week plan**: 36 weeks, 5 phases, certifications |
 | [docs/principles/README.md](docs/principles/README.md) | The 13 principles in learning order, each with hands-on labs |

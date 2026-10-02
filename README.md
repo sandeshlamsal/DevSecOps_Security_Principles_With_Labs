@@ -21,6 +21,8 @@ OWASP Top 10 and more, and is meant to be run locally for learning. The reasons 
 
 🔄 **[Project flow](docs/PROJECT-FLOW.md)**: the end-to-end lifecycle, build/rebuild and teardown, and cost.
 
+🧩 **[Claude skills](docs/skills/README.md)**: the `security-triage` skill in `.claude/skills/`, and a guide to building more.
+
 🗺️ **[INDEX.md](INDEX.md)**: the map of every page and file in the project.
 
 
